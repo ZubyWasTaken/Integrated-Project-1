@@ -24,10 +24,14 @@ public class IntegratedProject1 extends Application {
         // Creates new button object called btn
         Button btn = new Button();
 
+
         //Sets the visable text on the button object to display "Say 'Hello World'"'
         btn.setText("Say 'Hello World'");
 
         //When the button object recieves an action, a new event handler is created to handle that action
+
+        
+
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
