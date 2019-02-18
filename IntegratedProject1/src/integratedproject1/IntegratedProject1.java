@@ -33,8 +33,8 @@ public class IntegratedProject1 extends Application {
             @Override
             //This handles that event
             public void handle(ActionEvent event) {
-                //Outputs to console "Hello World!"
-                System.out.println("Hello World!");
+                //Outputs to console "Hello Guys!"
+                System.out.println("Hello Guys!");
             }
         });
         
