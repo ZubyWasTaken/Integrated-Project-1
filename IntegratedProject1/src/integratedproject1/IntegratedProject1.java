@@ -23,7 +23,7 @@ public class IntegratedProject1 extends Application {
     public void start(Stage primaryStage) {
         Button btn = new Button();
 
-        btn.setText("Say 'Hello Svend hi '");
+        btn.setText("Say 'Hello World!'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
