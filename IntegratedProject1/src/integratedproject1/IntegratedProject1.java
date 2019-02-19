@@ -71,10 +71,8 @@ public class IntegratedProject1 extends Application {
         //Moving Buttons
         btn_login.setTranslateY(-60);
         btn_register.setTranslateY(-20);
-        //transform staff login button
+        //Transform staff login button
 
-       
-        
         
         //A new scene called scene is created, with the root as the main scene, and the height and width of the scene set.
         Scene scene = new Scene(root, 600, 400);
