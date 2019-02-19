@@ -4,7 +4,10 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+<<<<<<< HEAD
         
+=======
+>>>>>>> 50d6c3ab98fa005038caa5bd5dd218db9860f546
         {
             "type": "java",
             "name": "Debug (Launch) - Current File",
