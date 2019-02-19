@@ -23,29 +23,43 @@ public class IntegratedProject1 extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        // Creates new button object called btn
+        // cCreate new button objects
         Button btn_login = new Button();
         Button btn_register = new Button();
         Button btn_stafflogin = new Button();
 
+        /*
+        All the stuff to do with the login button is below here 
+        */
+
+        // Sets display text of button
         btn_login.setText("Switch to User Login");
+
+        // This part handles the user clicking the button and performs an action when done so
         btn_login.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
-            //Event Handler to click button
+            //Event handler when button is clicked
             public void handle(ActionEvent event) {
                 //Outputs to console "Switching to User Login Screen!"
                 System.out.println("Switching to User Login Screen");
             }
         });
 
-        //Create User Registr Button
+        /*
+        All the stuff to do with the register button is below here 
+        */
+
+        // Sets display text of button 
         btn_register.setText("User Register");
+
+        // This part handles the user clicking the button and performs an action when done so
         btn_login.setOnAction(new EventHandler<ActionEvent>(){
 
             @Override
-            //Event Handler to click button
+            //Event handler when button is clicked
             public void handle(ActionEvent event){
+                //Outputs to console 
                 System.out.println("Switching to User Register Screen");
 
             }
@@ -58,7 +72,7 @@ public class IntegratedProject1 extends Application {
 
 
         
-        //New Stackpane created called 'root'.
+        //New Stackpane is created called 'root'.
         // This layers its children back to front
         StackPane root = new StackPane();
         
@@ -76,8 +90,8 @@ public class IntegratedProject1 extends Application {
         //A new scene called scene is created, with the root as the main scene, and the height and width of the scene set.
         Scene scene = new Scene(root, 600, 400);
         
-        //Sets title to "Hello World!"
-        primaryStage.setTitle("Hello World!");
+        //Sets title to "IP1"
+        primaryStage.setTitle("IP1");
         //Specify's what scene to be used here
         primaryStage.setScene(scene);
         //Displays that scene
