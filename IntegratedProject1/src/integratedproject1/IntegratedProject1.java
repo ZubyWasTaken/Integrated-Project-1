@@ -5,6 +5,8 @@
  */
 package integratedproject1;
 
+import com.sun.corba.se.spi.orbutil.fsm.Action;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,30 +24,60 @@ public class IntegratedProject1 extends Application {
     @Override
     public void start(Stage primaryStage) {
         // Creates new button object called btn
-        Button btn = new Button();
+        Button btn_login = new Button();
+        Button btn_register = new Button();
+        Button btn_stafflogin = new Button();
 
-        //Sets the visable text on the button object to display "Say 'Hello World'"'
-        btn.setText("Say 'Hello World'");
-
-        //When the button object recieves an action, a new event handler is created to handle that action
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+        //Create User Login Button
+        btn_login.setText("User Login");
+        btn_login.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
-            //This handles that event
+            //Event Handler to click button
             public void handle(ActionEvent event) {
-                //Outputs to console "Hello Guys!"
-                System.out.println("Hello Guys!");
+                //Outputs to console "Switching to User Login Screen!"
+                System.out.println("Switching to User Login Screen");
             }
         });
+
+        //Create User Registr Button
+        btn_register.setText("User Register");
+        btn_login.setOnAction(new EventHandler<ActionEvent>(){
+
+            @Override
+            //Event Handler to click button
+            public void handle(ActionEvent event){
+                System.out.println("Switching to User Register Screen");
+
+            }
+        });
+
+        //Create staff login button
+
+        //Create event handler to click button
+
+
+
         
         //New Stackpane created called 'root'.
         // This layers its children back to front
         StackPane root = new StackPane();
-        //The root object gets it's children as a list and adds button as another child
-        root.getChildren().add(btn);
+        
+        //Adding buttons to screen
+        root.getChildren().add(btn_login);
+        root.getChildren().add(btn_register);
+        //add staff login button
+
+        //Moving Buttons
+        btn_login.setTranslateY(-60);
+        btn_register.setTranslateY(-20);
+        //transform staff login button
+
+       
+        
         
         //A new scene called scene is created, with the root as the main scene, and the height and width of the scene set.
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, 600, 400);
         
         //Sets title to "Hello World!"
         primaryStage.setTitle("Hello World!");
