@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
+    "java.home": "C:\\Program Files\\Java\\jdk1.8.0_191"
+=======
     "java.home":"C:\\Program Files\\Java\\jdk1.8.0_191"
+>>>>>>> 50d6c3ab98fa005038caa5bd5dd218db9860f546
 }
