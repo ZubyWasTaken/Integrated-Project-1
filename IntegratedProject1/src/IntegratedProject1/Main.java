@@ -1,4 +1,6 @@
+
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -18,24 +20,27 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        window.setTitle("Zuby");
-
-        HBox topMenu = new HBox();
-        Button buttonA = new Button("File");
-        Button buttonB = new Button("Edit");
-        Button buttonC = new Button("View");
-        topMenu.getChildren().addAll(buttonA, buttonB, buttonC);
+        window.setTitle("Caledonian Sports Clinic");
 
         VBox leftMenu = new VBox();
-        Button buttonD = new Button("D");
-        Button buttonE = new Button("E");
-        Button buttonF = new Button("F");
-        leftMenu.getChildren().addAll(buttonD, buttonE, buttonF);
-        buttonE.setOnAction(e -> AlertBox.display("title", "message"));
-        buttonD.setOnAction(e -> ConfirmBox.display("Title", "Do you want to exit?"));
+        Button userLogin = new Button("User Login");
+        Button userRegister = new Button("User Register");
+        Button staffLogin = new Button("Staff Login");
+        Button exitProgram = new Button("Exit");
+        
+        userLogin.setPrefSize(90, 20);
+        userRegister.setPrefSize(90, 20);
+        staffLogin.setPrefSize(90, 20);
+        exitProgram.setPrefSize(90, 20);
+        
+        leftMenu.getChildren().addAll(userLogin, userRegister, staffLogin, exitProgram);
+        userLogin.setOnAction(e -> UserLogin.display("User Login", "Please log in below."));
+        
+        
+//        buttonD.setOnAction(e -> ConfirmBox.display("Title", "Do you want to exit?"));
 
         BorderPane borderPane = new BorderPane();
-        borderPane.setTop(topMenu);
+        leftMenu.setAlignment(Pos.CENTER);
         borderPane.setLeft(leftMenu);
 
         
