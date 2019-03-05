@@ -35,6 +35,7 @@ public class Main extends Application {
         
         leftMenu.getChildren().addAll(userLogin, userRegister, staffLogin, exitProgram);
         userLogin.setOnAction(e -> UserLogin.display("User Login", "Please log in below."));
+        staffLogin.setOnAction(e -> StaffLogin.display("Staff Login", "Staff please log in below."));
         
         
 //        buttonD.setOnAction(e -> ConfirmBox.display("Title", "Do you want to exit?"));
