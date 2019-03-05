@@ -6,8 +6,13 @@
 package integratedproject;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,6 +33,19 @@ import javafx.stage.StageStyle;
  * @author Zuby
  */
 public class FXMLDocumentController implements Initializable {
+
+    public void writeToFile(String forename, String surname, String userID, String password, LocalDate dateOfBirth) throws IOException {
+
+        try (PrintWriter writer = new PrintWriter("UserData/" + userID + ".txt", "UTF-8")) {
+            writer.println(userID);
+            writer.println(forename);
+            writer.println(surname);
+            writer.println(password);
+            writer.println(dateOfBirth);
+            writer.close();
+        }
+
+    }
 
     @FXML
     private TextField forename1;
@@ -74,6 +92,16 @@ public class FXMLDocumentController implements Initializable {
             System.out.println("Password must be 8 to 18 characters in length.");
 
         }
+
+        int max = 1000;
+        int min = 1;
+        Random rand = new Random();
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+
+        String userID = forename + surname + randomNum;
+
+        writeToFile(forename, surname, userID, passwrd, dateOfBirth);
+
     }
 
 

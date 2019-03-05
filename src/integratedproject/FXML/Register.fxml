@@ -17,7 +17,7 @@
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-                <Text layoutX="219.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Registeration" textAlignment="CENTER">
+                <Text layoutX="219.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Registration" textAlignment="CENTER">
                     <font>
                         <Font size="25.0" />
                     </font>
