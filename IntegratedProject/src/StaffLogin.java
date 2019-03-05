@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class UserLogin {
+public class StaffLogin {
 
     public static void display(String title, String message) {
 
@@ -21,42 +21,45 @@ public class UserLogin {
         window.setTitle(title);
         Label loginLabel = new Label();
         loginLabel.setText(message);
+
         
-        TextField userLogin = new TextField ();
-        PasswordField userPassword = new PasswordField();
+        
+        TextField staffLogin = new TextField ();
+        PasswordField staffPassword = new PasswordField();
         Button login = new Button("Login");
-        
-        userLogin.prefWidth(10);
-        userPassword.minWidth(100);
-        
+
         loginLabel.setTranslateX(-40);
         login.setTranslateY(40);
         login.setTranslateX(-40);
         
+        staffLogin.prefWidth(10);
+        staffPassword.minWidth(100);
         
-        userLogin.setTranslateY(-110);
-        userLogin.setTranslateX(5);
         
-        userPassword.setTranslateY(-62);
-        userPassword.setTranslateX(5);
+        
+        staffLogin.setTranslateY(-110);
+        staffLogin.setTranslateX(5);
+        
+        staffPassword.setTranslateY(-62);
+        staffPassword.setTranslateX(5);
        
         
-        Label userLabel = new Label("User ID:");
+        Label staffLabel = new Label("Staff ID:");
         Label passwordLabel = new Label("Password:");
         
-        userLabel.setTranslateY(6);
+        staffLabel.setTranslateY(6);
         passwordLabel.setTranslateY(26);
         
-        userLogin.setPromptText("Plese enter your user ID");
-        userPassword.setPromptText("Plese enter your password");
+        staffLogin.setPromptText("Plese enter your Staff ID");
+        staffPassword.setPromptText("Plese enter your password");
         
         StackPane layout = new StackPane();
-        layout.getChildren().addAll(loginLabel, userLogin, userPassword, login);
+        layout.getChildren().addAll(loginLabel, staffLogin, staffPassword, login);
 //        layout.setAlignment(Pos.CENTER);
         
         
         VBox labels = new VBox();
-        labels.getChildren().addAll(userLabel, passwordLabel);
+        labels.getChildren().addAll(staffLabel, passwordLabel);
         labels.setSpacing(10.0);
 //        labels.setAlignment(Pos.CENTER);
         

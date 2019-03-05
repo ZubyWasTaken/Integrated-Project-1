@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class UserLogin {
+public class UserRegister {
 
     public static void display(String title, String message) {
 
