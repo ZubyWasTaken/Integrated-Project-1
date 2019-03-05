@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="integratedproject.FXMLDocumentController">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Button fx:id="registerButton" layoutX="273.0" layoutY="105.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" onAction="#regButtonAction" text="User Register" />
+                <Text layoutX="133.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caledonian Sports Clinic">
+                    <font>
+                        <Font size="35.0" />
+                    </font>
+                </Text>
+                <Button layoutX="273.0" layoutY="162.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" text="User Login" />
+                <Button layoutX="273.0" layoutY="222.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" text="Staff Login" />
+                <Button layoutX="273.0" layoutY="283.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" text="Staff Exit" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
