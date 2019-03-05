@@ -21,10 +21,16 @@ public class StaffLogin {
         window.setTitle(title);
         Label loginLabel = new Label();
         loginLabel.setText(message);
+
+        
         
         TextField staffLogin = new TextField ();
         PasswordField staffPassword = new PasswordField();
         Button login = new Button("Login");
+
+        loginLabel.setTranslateX(-40);
+        login.setTranslateY(40);
+        login.setTranslateX(-40);
         
         staffLogin.prefWidth(10);
         staffPassword.minWidth(100);
@@ -48,7 +54,7 @@ public class StaffLogin {
         staffPassword.setPromptText("Plese enter your password");
         
         StackPane layout = new StackPane();
-        layout.getChildren().addAll(staffLabel, staffLogin, staffPassword, login);
+        layout.getChildren().addAll(loginLabel, staffLogin, staffPassword, login);
 //        layout.setAlignment(Pos.CENTER);
         
         
