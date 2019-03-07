@@ -286,8 +286,8 @@ public class FXMLDocumentController implements Initializable {
         String username = usernameUser.getText();
         String passwrd = passwordUser.getText();
         
-        readTextFile(username);
-        System.out.println(username);
+        ArrayList UserPass = readTextFile(username);
+        System.out.println(UserPass);
 
     }
 
