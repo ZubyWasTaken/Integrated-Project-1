@@ -5,12 +5,16 @@
  */
 package integratedproject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -266,14 +270,25 @@ public class FXMLDocumentController implements Initializable {
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
-    
-    
-    
+    public ArrayList readTextFile(String username) throws FileNotFoundException {
+        ArrayList<String> UserPass = new ArrayList<>();
+        Scanner input = new Scanner(new File("UserData/" + username + ".txt"));
+        int counter = 0;
+        while (input.hasNextLine() && counter < 2) {
+            UserPass.add((input.nextLine()));
+            counter++;
+        }
+        return UserPass;
+    }
+
     @FXML
     public void userLogin(ActionEvent event) throws IOException {
         String username = usernameUser.getText();
         String passwrd = passwordUser.getText();
         
+        readTextFile(username);
+        System.out.println(username);
+
     }
 
     @FXML
