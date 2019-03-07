@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -20,9 +21,9 @@
                 <TextField fx:id="usernameUser" layoutX="103.0" layoutY="71.0" prefHeight="25.0" prefWidth="149.0" promptText="User ID" />
                 <Button layoutX="79.0" layoutY="209.0" mnemonicParsing="false" onAction="#homeButtonAction" text="Home" />
                 <Button layoutX="229.0" layoutY="209.0" mnemonicParsing="false" onAction="#userLogin" text="Login" />
-            <Label fx:id="usernameUserLabel" layoutX="103.0" layoutY="107.0" prefHeight="17.0" prefWidth="149.0" />
-            <TextField fx:id="passwordUser" layoutX="103.0" layoutY="140.0" prefHeight="25.0" prefWidth="149.0" promptText="Password" />
-            <Label fx:id="passwordUserLabel" layoutX="103.0" layoutY="176.0" prefHeight="17.0" prefWidth="149.0" />
+            <Label fx:id="usernameUserLabel" alignment="CENTER" layoutX="43.0" layoutY="107.0" prefHeight="17.0" prefWidth="269.0" />
+            <Label fx:id="passwordUserLabel" alignment="CENTER" layoutX="43.0" layoutY="184.0" prefHeight="17.0" prefWidth="269.0" />
+            <PasswordField fx:id="passwordUser" layoutX="103.0" layoutY="151.0" promptText="Password" />
             </children>
         </AnchorPane>
     </children>

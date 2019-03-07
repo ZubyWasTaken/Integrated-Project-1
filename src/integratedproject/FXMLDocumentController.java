@@ -5,16 +5,15 @@
  */
 package integratedproject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,26 +35,12 @@ import javafx.stage.StageStyle;
 public class FXMLDocumentController implements Initializable {
 
     /*
-     This methoid below writes all the user data to a text file, with the userID
-     as the file name.
-     */
-    public void writeToFile(String forename, String surname, String userID, String password, LocalDate dateOfBirth) throws IOException {
-
-        try (PrintWriter writer = new PrintWriter("UserData/" + userID + ".txt", "UTF-8")) {
-            writer.println(userID);
-            writer.println(password);
-            writer.println(forename);
-            writer.println(surname);
-            writer.println(dateOfBirth);
-            writer.close();
-        }
-
-    }
-
-    /*
      These variables below link the FXML labels and text fields
      with the code, allowing the code to manipulate them.
      */
+    @FXML
+    private Label userIDLabel;
+
     @FXML
     private TextField forename1;
 
@@ -90,13 +75,16 @@ public class FXMLDocumentController implements Initializable {
     private TextField usernameUser;
 
     @FXML
-    private TextField passwordUser;
+    private PasswordField passwordUser;
 
     @FXML
     private Label usernameUserLabel;
 
     @FXML
     private Label passwordUserLabel;
+
+    @FXML
+    private Button registerButton;
 
     /*
      This code is executed when the 'Register' button is clicked in
@@ -215,10 +203,14 @@ public class FXMLDocumentController implements Initializable {
                 surnameLabel.setText("");
                 dateLabel.setText("");
 
-                writeToFile(forename, surname, userID, passwrd, dateOfBirth);
+                // Calls writeToFile method in ReadWrite class.
+                ReadWrite.writeToFile(forename, surname, userID, passwrd, dateOfBirth);
 
-                // Closes that window
-                ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+                // Displays the users ID to them.
+                userIDLabel.setText("Your user ID is: " + userID);
+
+                registerButton.setDisable(true);
+
             }
         }
     }
@@ -250,7 +242,7 @@ public class FXMLDocumentController implements Initializable {
 
         Scene scene = new Scene(root);
         Stage reg = new Stage(StageStyle.DECORATED);
-        reg.setTitle("Register");
+        reg.setTitle("Home");
         reg.setScene(scene);
 
         reg.show();
@@ -264,30 +256,37 @@ public class FXMLDocumentController implements Initializable {
 
         Scene scene = new Scene(root);
         Stage reg = new Stage(StageStyle.DECORATED);
-        reg.setTitle("Register");
+        reg.setTitle("User Login");
         reg.setScene(scene);
         reg.show();
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
-    }
 
-    public ArrayList readTextFile(String username) throws FileNotFoundException {
-        ArrayList<String> UserPass = new ArrayList<>();
-        Scanner input = new Scanner(new File("UserData/" + username + ".txt"));
-        int counter = 0;
-        while (input.hasNextLine() && counter < 2) {
-            UserPass.add((input.nextLine()));
-            counter++;
-        }
-        return UserPass;
     }
 
     @FXML
     public void userLogin(ActionEvent event) throws IOException {
         String username = usernameUser.getText();
         String passwrd = passwordUser.getText();
-        
-        ArrayList UserPass = readTextFile(username);
-        System.out.println(UserPass);
+
+        usernameUserLabel.setText("");
+        passwordUserLabel.setText("");
+
+        if (ReadWrite.doesUsernameExist(username) == true) {
+            System.out.println("Username Found");
+            List<String> testArray = ReadWrite.readTextFile(username);
+
+            if (passwrd.equals(testArray.get(1))) {
+                System.out.println("Password matches username");
+            }
+            if (!passwrd.equals(testArray.get(1))) {
+                System.out.println("Password does not match!");
+                usernameUserLabel.setText("Username/Password is incorrect");
+                passwordUserLabel.setText("Username/Password is incorrect");
+            }
+        } else {
+            System.out.println("Username Not Found");
+            usernameUserLabel.setText("Username does not exist.");
+        }
 
     }
 

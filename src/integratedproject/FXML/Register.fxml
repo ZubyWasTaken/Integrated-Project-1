@@ -25,12 +25,13 @@
                 <PasswordField fx:id="confirmPassword" layoutX="287.0" layoutY="180.0" promptText="Confirm Password" />
                 <DatePicker fx:id="DoB" layoutX="168.0" layoutY="261.0" prefHeight="25.0" prefWidth="149.0" promptText="Date of Birth" />
                 <Button layoutX="94.0" layoutY="342.0" mnemonicParsing="false" onAction="#homeButtonAction" text="Home" />
-                <Button layoutX="332.0" layoutY="342.0" mnemonicParsing="false" onAction="#registerButtonAction" text="Register" />
+                <Button fx:id="registerButton" layoutX="332.0" layoutY="342.0" mnemonicParsing="false" onAction="#registerButtonAction" text="Register" />
             <Label fx:id="forenameLabel" layoutX="44.0" layoutY="124.0" prefHeight="17.0" prefWidth="189.0" />
             <Label fx:id="surnameLabel" layoutX="287.0" layoutY="124.0" prefHeight="17.0" prefWidth="189.0" />
             <Label fx:id="passwordLabel" alignment="CENTER" layoutX="24.0" layoutY="212.0" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER" textOverrun="CLIP" />
             <Label fx:id="confirmPasswordLabel" alignment="CENTER" layoutX="263.0" layoutY="212.0" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER" textOverrun="CLIP" />
             <Label fx:id="dateLabel" layoutX="168.0" layoutY="294.0" prefHeight="17.0" prefWidth="189.0" />
+            <Label fx:id="userIDLabel" layoutX="151.0" layoutY="367.0" prefHeight="17.0" prefWidth="171.0" />
             </children>
         </AnchorPane>
     </children>
