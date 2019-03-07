@@ -39,9 +39,9 @@ public class FXMLDocumentController implements Initializable {
 
         try (PrintWriter writer = new PrintWriter("UserData/" + userID + ".txt", "UTF-8")) {
             writer.println(userID);
+            writer.println(password);
             writer.println(forename);
             writer.println(surname);
-            writer.println(password);
             writer.println(dateOfBirth);
             writer.close();
         }
@@ -83,11 +83,22 @@ public class FXMLDocumentController implements Initializable {
     private Label dateLabel;
 
     @FXML
+    private TextField usernameUser;
+
+    @FXML
+    private TextField passwordUser;
+
+    @FXML
+    private Label usernameUserLabel;
+
+    @FXML
+    private Label passwordUserLabel;
 
     /*
      This code is executed when the 'Register' button is clicked in
      Register.fxml
      */
+    @FXML
     private void registerButtonAction(ActionEvent event) throws IOException {
 
         /*
@@ -242,9 +253,31 @@ public class FXMLDocumentController implements Initializable {
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
 
     }
+
+    @FXML
+    public void userLoginButtonAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/UserLogin.fxml"));
+
+        Scene scene = new Scene(root);
+        Stage reg = new Stage(StageStyle.DECORATED);
+        reg.setTitle("Register");
+        reg.setScene(scene);
+        reg.show();
+        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+    }
+
+    
+    
     
     @FXML
-    public void exitButtonAction (ActionEvent event) throws IOException{
+    public void userLogin(ActionEvent event) throws IOException {
+        String username = usernameUser.getText();
+        String passwrd = passwordUser.getText();
+        
+    }
+
+    @FXML
+    public void exitButtonAction(ActionEvent event) throws IOException {
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
