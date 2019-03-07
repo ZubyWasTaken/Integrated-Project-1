@@ -18,7 +18,7 @@
                 </Text>
                 <Button layoutX="273.0" layoutY="162.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" text="User Login" />
                 <Button layoutX="273.0" layoutY="222.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" text="Staff Login" />
-                <Button layoutX="273.0" layoutY="283.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" text="Staff Exit" />
+                <Button fx:id="exitButton" layoutX="273.0" layoutY="283.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" onAction="#exitButtonAction" text="Exit" />
             </children>
         </AnchorPane>
     </children>

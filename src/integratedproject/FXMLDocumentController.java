@@ -8,10 +8,7 @@ package integratedproject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -122,7 +119,7 @@ public class FXMLDocumentController implements Initializable {
             System.out.println("Your passwords match.");
 
         } else {
-            System.out.println("Your passwords do not match.");;
+            System.out.println("Your passwords do not match.");
             confirmPasswordLabel.setText("Your passwords do not match.");
         }
 
@@ -160,7 +157,7 @@ public class FXMLDocumentController implements Initializable {
 
             passwordLabel.setText("Password must be 8 to 18 characters.");
         }
-        
+
         /*
          If the forename and username fields and datepicker are not empty then it clears the 
          labels.
@@ -174,7 +171,7 @@ public class FXMLDocumentController implements Initializable {
         if (dateOfBirth != null) {
             dateLabel.setText("");
         }
-        
+
         /*
          If the password is between the limit then it clears the label telling
          you that your password is not within limit.
@@ -182,7 +179,7 @@ public class FXMLDocumentController implements Initializable {
         if ((passwrd.length() > 7 && passwrd.length() < 19)) {
             passwordLabel.setText("");
         }
-        
+
         /*
          Checks if your password matches, and if the field has any data in it,
          if so then it clears the label that tells you to confirm your password.
@@ -190,13 +187,13 @@ public class FXMLDocumentController implements Initializable {
         if (confirmPasswrd.length() != 0 && (match == true)) {
             confirmPasswordLabel.setText("");
         }
-        
+
         /*
         If the forename, surname, datepicker, and both password fields are NOT
         empty, AND if the password lengths are within limit, THEN it clears the
         remaining labels, and calls passes the variables into the method to
         write the data to an individual text file.
-        */
+         */
         if (forename.length() != 0 && surname.length() != 0 && dateOfBirth != null && passwrd.length() != 0 && confirmPasswrd.length() != 0) {
             if ((passwrd.length() > 7 && passwrd.length() < 19)) {
                 forenameLabel.setText("");
@@ -204,7 +201,7 @@ public class FXMLDocumentController implements Initializable {
                 dateLabel.setText("");
 
                 writeToFile(forename, surname, userID, passwrd, dateOfBirth);
-                
+
                 // Closes that window
                 ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
             }
@@ -225,17 +222,30 @@ public class FXMLDocumentController implements Initializable {
         reg.setScene(scene);
 
         reg.show();
+        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
-    
     /*
     When the Home button in Register.fxml is clicked, it closes the window,
-    effectively taking you back to Home.fxml
-    */
+    and re-opens Home.fxml
+     */
     @FXML
-    public void homeButtonAction(ActionEvent event) {
+    public void homeButtonAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/Home.fxml"));
+
+        Scene scene = new Scene(root);
+        Stage reg = new Stage(StageStyle.DECORATED);
+        reg.setTitle("Register");
+        reg.setScene(scene);
+
+        reg.show();
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
 
+    }
+    
+    @FXML
+    public void exitButtonAction (ActionEvent event) throws IOException{
+        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
     @Override
