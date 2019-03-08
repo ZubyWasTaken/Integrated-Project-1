@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package integratedproject;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -32,7 +23,7 @@ import javafx.stage.StageStyle;
  *
  * @author Zuby
  */
-public class FXMLDocumentController implements Initializable {
+public class RegisterDocumentController implements Initializable {
 
     /*
      These variables below link the FXML labels and text fields
@@ -70,18 +61,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Label dateLabel;
-
-    @FXML
-    private TextField usernameUser;
-
-    @FXML
-    private PasswordField passwordUser;
-
-    @FXML
-    private Label usernameUserLabel;
-
-    @FXML
-    private Label passwordUserLabel;
 
     @FXML
     private Button registerButton;
@@ -192,10 +171,10 @@ public class FXMLDocumentController implements Initializable {
         }
 
         /*
-        If the forename, surname, datepicker, and both password fields are NOT
-        empty, AND if the password lengths are within limit, THEN it clears the
-        remaining labels, and calls passes the variables into the method to
-        write the data to an individual text file.
+         If the forename, surname, datepicker, and both password fields are NOT
+         empty, AND if the password lengths are within limit, THEN it clears the
+         remaining labels, and calls passes the variables into the method to
+         write the data to an individual text file.
          */
         if (forename.length() != 0 && surname.length() != 0 && dateOfBirth != null && passwrd.length() != 0 && confirmPasswrd.length() != 0) {
             if ((passwrd.length() > 7 && passwrd.length() < 19)) {
@@ -215,26 +194,9 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-
-    /* This button finds the 'User Register' button on the Home.fxml, and once it
-     has found the button it calls the button action and the following code
-     changes the scene and opens the Register.fxml */
-    @FXML
-    private void regButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/Register.fxml"));
-
-        Scene scene = new Scene(root);
-        Stage reg = new Stage(StageStyle.DECORATED);
-        reg.setTitle("Register");
-        reg.setScene(scene);
-
-        reg.show();
-        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
-    }
-
     /*
-    When the Home button in Register.fxml is clicked, it closes the window,
-    and re-opens Home.fxml
+     When the Home button in Register.fxml is clicked, it closes the window,
+     and re-opens Home.fxml
      */
     @FXML
     public void homeButtonAction(ActionEvent event) throws IOException {
@@ -248,51 +210,6 @@ public class FXMLDocumentController implements Initializable {
         reg.show();
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
 
-    }
-
-    @FXML
-    public void userLoginButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/UserLogin.fxml"));
-
-        Scene scene = new Scene(root);
-        Stage reg = new Stage(StageStyle.DECORATED);
-        reg.setTitle("User Login");
-        reg.setScene(scene);
-        reg.show();
-        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
-
-    }
-
-    @FXML
-    public void userLogin(ActionEvent event) throws IOException {
-        String username = usernameUser.getText();
-        String passwrd = passwordUser.getText();
-
-        usernameUserLabel.setText("");
-        passwordUserLabel.setText("");
-
-        if (ReadWrite.doesUsernameExist(username) == true) {
-            System.out.println("Username Found");
-            List<String> testArray = ReadWrite.readTextFile(username);
-
-            if (passwrd.equals(testArray.get(1))) {
-                System.out.println("Password matches username");
-            }
-            if (!passwrd.equals(testArray.get(1))) {
-                System.out.println("Password does not match!");
-                usernameUserLabel.setText("Username/Password is incorrect");
-                passwordUserLabel.setText("Username/Password is incorrect");
-            }
-        } else {
-            System.out.println("Username Not Found");
-            usernameUserLabel.setText("Username does not exist.");
-        }
-
-    }
-
-    @FXML
-    public void exitButtonAction(ActionEvent event) throws IOException {
-        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
     @Override

@@ -9,13 +9,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 
 /**
  *
@@ -23,6 +20,28 @@ import javafx.scene.control.Label;
  */
 public class ReadWrite {
 
+    /*
+     This method checks if the username exists. How it does this is by checking
+     if the UserData directory contains a text file with the userID that has been
+     passed into the method. If it doesn't exist, the try/catch block catches the
+     error and instead of throwing an error, it returns false. If it has been
+     found then it returns true.
+     */
+    public static boolean doesUsernameExist(String username) throws FileNotFoundException {
+        try {
+            Scanner user = new Scanner(new File("UserData/" + username + ".txt"));
+            return true;
+        } catch (FileNotFoundException e) {
+            return false;
+        }
+    }
+
+    /*
+     This method gets the username passed in, and scans the UserData directory
+     to find a matching username in that directory, and if it has been found
+     it returns the first two items in the text file and appends it to a
+     List<String> and returns that.
+     */
     public static List<String> readTextFile(String username) throws FileNotFoundException {
         List<String> UserPass = new ArrayList<>();
 
@@ -34,17 +53,6 @@ public class ReadWrite {
         }
         return UserPass;
 
-    }
-
-    public static boolean doesUsernameExist(String username) throws FileNotFoundException {
-        try {
-            Scanner user = new Scanner(new File("UserData/" + username + ".txt"));
-            return true;
-        } catch (FileNotFoundException e) {
-            return false;
-        }
-
-      
     }
 
     /*
