@@ -18,6 +18,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import java.util.Date;
 
 /**
  *
@@ -81,6 +82,7 @@ public class RegisterDocumentController implements Initializable {
         String passwrd = password.getText();
         String confirmPasswrd = confirmPassword.getText();
         LocalDate dateOfBirth = DoB.getValue();
+        LocalDate date = LocalDate.now();
 
         /*
          This is to affix a random number to the user's forename and surname
@@ -131,6 +133,7 @@ public class RegisterDocumentController implements Initializable {
             dateLabel.setText("Please confirm your Date of Birth.");
         }
 
+
         /*
          If the password entered is not between 8 and 18 chars it prompts
          the user that their password must be between those two limits.
@@ -152,6 +155,9 @@ public class RegisterDocumentController implements Initializable {
         }
         if (dateOfBirth != null) {
             dateLabel.setText("");
+            if (dateOfBirth.compareTo(date) > 0) {
+                dateLabel.setText("DoB cannot be in the future.");
+            }
         }
 
         /*
@@ -176,7 +182,7 @@ public class RegisterDocumentController implements Initializable {
          remaining labels, and calls passes the variables into the method to
          write the data to an individual text file.
          */
-        if (forename.length() != 0 && surname.length() != 0 && dateOfBirth != null && passwrd.length() != 0 && confirmPasswrd.length() != 0) {
+        if (forename.length() != 0 && surname.length() != 0 && dateOfBirth != null && passwrd.length() != 0 && confirmPasswrd.length() != 0 && dateOfBirth.compareTo(date) < 0) {
             if ((passwrd.length() > 7 && passwrd.length() < 19)) {
                 forenameLabel.setText("");
                 surnameLabel.setText("");
