@@ -9,21 +9,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="263.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="integratedproject.UserLoginDocumentController">
+<VBox prefHeight="380.0" prefWidth="452.0" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="integratedproject.UserLoginDocumentController">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="314.0" prefWidth="215.0" VBox.vgrow="ALWAYS">
             <children>
-                <Text layoutX="113.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" textAlignment="CENTER">
+                <Text layoutX="170.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" textAlignment="CENTER">
                     <font>
                         <Font size="25.0" />
                     </font>
                 </Text>
-                <TextField fx:id="usernameUser" layoutX="103.0" layoutY="71.0" prefHeight="25.0" prefWidth="149.0" promptText="User ID" />
-                <Button layoutX="79.0" layoutY="209.0" mnemonicParsing="false" onAction="#homeButtonAction" text="Home" />
-                <Button layoutX="229.0" layoutY="209.0" mnemonicParsing="false" onAction="#userLogin" text="Login" />
-            <Label fx:id="usernameUserLabel" alignment="CENTER" layoutX="43.0" layoutY="107.0" prefHeight="17.0" prefWidth="269.0" />
-            <Label fx:id="passwordUserLabel" alignment="CENTER" layoutX="43.0" layoutY="184.0" prefHeight="17.0" prefWidth="269.0" />
-            <PasswordField fx:id="passwordUser" layoutX="103.0" layoutY="151.0" promptText="Password" />
+                <TextField fx:id="usernameUser" layoutX="155.0" layoutY="75.0" prefHeight="25.0" prefWidth="149.0" promptText="User ID" />
+                <Button layoutX="45.0" layoutY="316.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="25.0" prefWidth="100.0" text="Home" />
+                <Button layoutX="314.0" layoutY="316.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="25.0" prefWidth="100.0" text="Login" />
+            <Label fx:id="usernameUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="110.0" prefHeight="17.0" prefWidth="269.0" />
+            <Label fx:id="passwordUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="225.0" prefHeight="17.0" prefWidth="269.0" />
+            <PasswordField fx:id="passwordUser" layoutX="155.0" layoutY="190.0" promptText="Password" />
             </children>
         </AnchorPane>
     </children>

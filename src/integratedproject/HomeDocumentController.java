@@ -19,45 +19,62 @@ import javafx.stage.StageStyle;
  */
 public class HomeDocumentController implements Initializable {
 
-    /* This button finds the 'User Register' button on the Home.fxml, and once it
-     has found the button it calls the button action and the following code
-     changes the scene and opens the Register.fxml */
-    @FXML
-    private void regButtonAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/Register.fxml"));
+    //<editor-fold defaultstate="collapsed" desc="Methods">
+    /*
+     Method to close the current window, with the mouseclick passed in as an
+     argument .
+     */
+    private void closeWindow(ActionEvent event) {
+        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+    }
 
+    // Method to load the Register.fxml file.
+    private void loadRegister() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/Register.fxml"));
         Scene scene = new Scene(root);
         Stage reg = new Stage(StageStyle.DECORATED);
         reg.setTitle("Register");
         reg.setScene(scene);
-
         reg.show();
-        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
-    /* This button finds the 'User Login' button on the Home.fxml, and once it
-     has found the button it calls the button action and the following code
-     changes the scene and opens the UserLogin.fxml */
-    @FXML
-    private void userLoginButtonAction(ActionEvent event) throws IOException {
+    // Method to load UserLogin.fxml file.
+    private void loadUserLogin() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/UserLogin.fxml"));
-
         Scene scene = new Scene(root);
         Stage reg = new Stage(StageStyle.DECORATED);
         reg.setTitle("User Login");
         reg.setScene(scene);
         reg.show();
-        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+    }
+//</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Buttons Methods">
+    /* Finds 'User Register' button and calls loadRegister() method and then
+     calls closeWindow() method, and passes the event (mouseclick) into it.*/
+    @FXML
+    private void regButtonAction(ActionEvent event) throws IOException {
+        loadRegister();
+        closeWindow(event);
+    }
+
+    /* Finds 'User Login' button and calls loadUserLogin() method and then
+     calls closeWindow() method, and passes the event (mouseclick) into it.*/
+    @FXML
+    private void userLoginButtonAction(ActionEvent event) throws IOException {
+        loadUserLogin();
+        closeWindow(event);
 
     }
 
-    /* This button finds the 'Exit' button on the Home.fxml, and once it
-     has found the button it calls the button action and the following code
-     exits the program.*/
+    /* Finds 'Exit' button andcalls closeWindow() method, and passes the
+     event (mouseclick) into it.*/
     @FXML
     private void exitButtonAction(ActionEvent event) throws IOException {
-        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+//        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+        closeWindow(event);
     }
+//</editor-fold>
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -6,19 +6,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="integratedproject.HomeDocumentController">
+<VBox prefHeight="492.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/8.0.51" xmlns:fx="http://javafx.com/fxml/1" fx:controller="integratedproject.HomeDocumentController">
     <children>
-        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="481.0" prefWidth="705.0" VBox.vgrow="ALWAYS">
             <children>
-                <Button fx:id="registerButton" layoutX="273.0" layoutY="105.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" onAction="#regButtonAction" text="User Register" />
-                <Text layoutX="133.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caledonian Sports Clinic">
+                <Button fx:id="registerButton" layoutX="303.0" layoutY="140.0" mnemonicParsing="false" onAction="#regButtonAction" prefHeight="38.0" prefWidth="128.0" text="User Register" />
+                <Text layoutX="180.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caledonian Sports Clinic">
                     <font>
                         <Font size="35.0" />
                     </font>
                 </Text>
-                <Button fx:id="loginButton" layoutX="273.0" layoutY="162.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" onAction="#userLoginButtonAction" text="User Login" />
-                <Button layoutX="273.0" layoutY="222.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" text="Staff Login" />
-                <Button fx:id="exitButton" layoutX="273.0" layoutY="283.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="94.0" onAction="#exitButtonAction" text="Exit" />
+                <Button fx:id="loginButton" layoutX="303.0" layoutY="220.0" mnemonicParsing="false" onAction="#userLoginButtonAction" prefHeight="38.0" prefWidth="128.0" text="User Login" />
+                <Button layoutX="303.0" layoutY="300.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="128.0" text="Staff Login" />
+                <Button fx:id="exitButton" layoutX="303.0" layoutY="380.0" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="38.0" prefWidth="128.0" text="Exit" />
             </children>
         </AnchorPane>
     </children>

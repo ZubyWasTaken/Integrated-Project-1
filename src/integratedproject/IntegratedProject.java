@@ -16,13 +16,13 @@ import javafx.stage.Stage;
  * @author Zuby
  */
 public class IntegratedProject extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/Home.fxml"));
-        
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
     }
@@ -33,5 +33,5 @@ public class IntegratedProject extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

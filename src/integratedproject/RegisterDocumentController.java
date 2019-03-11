@@ -25,6 +25,7 @@ import javafx.stage.StageStyle;
  */
 public class RegisterDocumentController implements Initializable {
 
+    //<editor-fold defaultstate="collapsed" desc="Variables">
     /*
      These variables below link the FXML labels and text fields
      with the code, allowing the code to manipulate them.
@@ -64,7 +65,9 @@ public class RegisterDocumentController implements Initializable {
 
     @FXML
     private Button registerButton;
+//</editor-fold>
 
+//<editor-fold defaultstate="collapsed" desc="Button Methods">
     /*
      This code is executed when the 'Register' button is clicked in
      Register.fxml
@@ -132,7 +135,6 @@ public class RegisterDocumentController implements Initializable {
             dateLabel.setText("Please confirm your Date of Birth.");
         }
 
-
         /*
          If the password entered is not between 8 and 18 chars it prompts
          the user that their password must be between those two limits.
@@ -143,7 +145,7 @@ public class RegisterDocumentController implements Initializable {
         }
 
         /*
-         If the forename and username fields and datepicker are not empty then it clears the 
+         If the forename and username fields and datepicker are not empty then it clears the
          labels.
          */
         if (forename.length() != 0) {
@@ -155,7 +157,7 @@ public class RegisterDocumentController implements Initializable {
         if (dateOfBirth != null) {
             dateLabel.setText("");
             if (dateOfBirth.compareTo(date) > 0) {
-                dateLabel.setText("DoB cannot be in the future.");
+                dateLabel.setText("Date of birth cannot be in the future.");
             }
         }
 
@@ -216,6 +218,7 @@ public class RegisterDocumentController implements Initializable {
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
 
     }
+//</editor-fold>
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

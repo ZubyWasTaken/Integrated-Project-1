@@ -23,6 +23,7 @@ import javafx.stage.StageStyle;
  */
 public class UserLoginDocumentController implements Initializable {
 
+    //<editor-fold defaultstate="collapsed" desc="Variables">
     /*
      These variables below link the FXML labels and text fields
      with the code, allowing the code to manipulate them.
@@ -38,8 +39,9 @@ public class UserLoginDocumentController implements Initializable {
 
     @FXML
     private Label passwordUserLabel;
+//</editor-fold>
 
-
+    //<editor-fold defaultstate="collapsed" desc="Button Methods">
     /*
      When the Home button in Register.fxml is clicked, it closes the window,
      and re-opens Home.fxml
@@ -75,7 +77,7 @@ public class UserLoginDocumentController implements Initializable {
         passwordUserLabel.setText("");
 
         /*
-         Checks if the username and password fields are empty, and if so it 
+         Checks if the username and password fields are empty, and if so it
          tells you to enter a username and/or a password.
          */
         if (username.length() == 0) {
@@ -119,6 +121,7 @@ public class UserLoginDocumentController implements Initializable {
             }
         }
     }
+//</editor-fold>
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
