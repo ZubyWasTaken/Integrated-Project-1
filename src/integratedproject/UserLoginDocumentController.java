@@ -23,7 +23,6 @@ import javafx.stage.StageStyle;
  */
 public class UserLoginDocumentController implements Initializable {
 
-    //<editor-fold defaultstate="collapsed" desc="Variables">
     /*
      These variables below link the FXML labels and text fields
      with the code, allowing the code to manipulate them.
@@ -39,9 +38,9 @@ public class UserLoginDocumentController implements Initializable {
 
     @FXML
     private Label passwordUserLabel;
-//</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Button Methods">
+    Patient patient = new Patient();
+
     /*
      When the Home button in Register.fxml is clicked, it closes the window,
      and re-opens Home.fxml
@@ -104,6 +103,7 @@ public class UserLoginDocumentController implements Initializable {
          */
         if (username.length() != 0) {
             if (ReadWrite.doesUsernameExist(username) == true) {
+                patient.setuserID(username);
                 System.out.println("Username Found");
                 List<String> testArray = ReadWrite.readTextFile(username);
 
@@ -131,7 +131,6 @@ public class UserLoginDocumentController implements Initializable {
             }
         }
     }
-//</editor-fold>
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

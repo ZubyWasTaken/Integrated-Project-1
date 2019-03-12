@@ -82,7 +82,9 @@ public class RegisterDocumentController implements Initializable {
         String confirmPasswrd = confirmPassword.getText();
         LocalDate dateOfBirth = DoB.getValue();
         LocalDate date = LocalDate.now();
-
+        
+        Patient patient = new Patient();
+      
         /*
          This is to affix a random number to the user's forename and surname
          to create a unique userID.
@@ -95,6 +97,8 @@ public class RegisterDocumentController implements Initializable {
         String temp1 = forename.substring(0, 2);
         String temp2 = surname.substring(0, 2);
         String userID = temp1 + temp2 + randomNum;
+        
+        
 
         /*
          Checks if passwords are equal.
@@ -149,9 +153,11 @@ public class RegisterDocumentController implements Initializable {
          */
         if (forename.length() != 0) {
             forenameLabel.setText("");
+           
         }
         if (surname.length() != 0) {
             surnameLabel.setText("");
+            
         }
         if (dateOfBirth != null) {
             dateLabel.setText("");
