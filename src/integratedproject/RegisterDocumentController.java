@@ -67,7 +67,7 @@ public class RegisterDocumentController implements Initializable {
     private Button registerButton;
 //</editor-fold>
 
-//<editor-fold defaultstate="collapsed" desc="Button Methods">
+
     /*
      This code is executed when the 'Register' button is clicked in
      Register.fxml
@@ -95,7 +95,9 @@ public class RegisterDocumentController implements Initializable {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
-        String userID = forename + surname + randomNum;
+        String temp1 = forename.substring(0,2);
+        String temp2 = surname.substring(0,2);
+        String userID = temp1 + temp2 + randomNum;
 
         /*
          Checks if passwords are equal.
@@ -218,7 +220,6 @@ public class RegisterDocumentController implements Initializable {
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
 
     }
-//</editor-fold>
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

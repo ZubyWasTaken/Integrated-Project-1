@@ -59,9 +59,8 @@ public class createAppointmentDocumentController implements Initializable {
 
     @FXML
     private Label comboLabel;
-    
-//</editor-fold>
 
+//</editor-fold>
     //<editor-fold defaultstate="collapsed" desc="Button Methods">
     /*
      When the Home button in Register.fxml is clicked, it closes the window,
@@ -89,41 +88,45 @@ public class createAppointmentDocumentController implements Initializable {
         LocalDate appointmentDate = dateAppointment.getValue();
         LocalDate dateNow = LocalDate.now();
 
-////        if (comboSelection.isEmpty()) {
-////            System.out.println("Fill in forename");
-////            comboLabel.setText("Please enter your forename.");
-////        }
-////        if (forename.length() == 0) {
-////            System.out.println("Fill in forename");
-////            forenameLabel.setText("Please enter your forename.");
-////        }
-////        if (surname.length() == 0) {
-////            System.out.println("Fill in surname");
-////            surnameLabel.setText("Please enter your surname.");
-////        }
-////        if (userID.length() == 0) {
-////            System.out.println("Fill in password");
-////            userIDLabel.setText("Please enter your password.");
-////        }
-////        if (appointmentDate == null) {
-////            System.out.println("No valid date");
-////            appointmentLabel.setText("Please confirm your Date of Birth.");
-////        }
-//
-////        ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);
-//        
-
+        if (comboSelection.length() == 0) {
+            System.out.println("Fill in forename");
+            comboLabel.setText("Please enter your forename.");
+        }
+        if (forename.length() == 0) {
+            System.out.println("Fill in forename");
+            forenameLabel.setText("Please enter your forename.");
+        }
+        if (surname.length() == 0) {
+            System.out.println("Fill in surname");
+            surnameLabel.setText("Please enter your surname.");
+        }
+        if (userID.length() == 0) {
+            System.out.println("Fill in password");
+            userIDLabel.setText("Please enter your password.");
+        }
+        if (appointmentDate == null) {
+            System.out.println("No valid date");
+            appointmentLabel.setText("Please confirm your Date of Birth.");
+        }
         
-            Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
+        if (forename.length() != 0 && surname.length() != 0 && appointmentDate != null && userID.length() != 0 && appointmentDate.compareTo(dateNow) < 0) {
+            ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);
+        }
+       
 
-            Scene scene = new Scene(root);
-            Stage reg = new Stage(StageStyle.DECORATED);
-            reg.setTitle("Home");
-            reg.setScene(scene);
-
-            reg.show();
-            ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+//        ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);
         
+
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
+
+        Scene scene = new Scene(root);
+        Stage reg = new Stage(StageStyle.DECORATED);
+        reg.setTitle("Home");
+        reg.setScene(scene);
+
+        reg.show();
+        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+
     }
 
     @FXML
