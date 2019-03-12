@@ -109,6 +109,16 @@ public class UserLoginDocumentController implements Initializable {
 
                 if (passwrd.equals(testArray.get(1))) {
                     System.out.println("Password matches username");
+
+                    Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
+
+                    Scene scene = new Scene(root);
+                    Stage reg = new Stage(StageStyle.DECORATED);
+                    reg.setTitle("User Home");
+                    reg.setScene(scene);
+
+                    reg.show();
+                    ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
                 }
                 if (!passwrd.equals(testArray.get(1))) {
                     System.out.println("Password does not match!");

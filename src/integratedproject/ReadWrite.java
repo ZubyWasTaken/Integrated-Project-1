@@ -71,5 +71,19 @@ public class ReadWrite {
         }
 
     }
+    
+    
+    public static void createAppointmentFile(String comboSelection, String forename, String surname, String userID, LocalDate appointmentDate) throws IOException {
+
+        try (PrintWriter writer = new PrintWriter("UserAppointments/" + userID + ".txt", "UTF-8")) {
+            writer.println(userID);
+            writer.println(comboSelection);
+            writer.println(forename);
+            writer.println(surname);
+            writer.println(appointmentDate);
+            writer.close();
+        }
+
+    }
 
 }

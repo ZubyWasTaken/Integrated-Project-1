@@ -26,12 +26,12 @@
                 <DatePicker fx:id="DoB" layoutX="248.0" layoutY="290.0" prefHeight="25.0" prefWidth="149.0" promptText="Date of Birth" />
                 <Button layoutX="118.0" layoutY="400.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="25.0" prefWidth="102.0" text="Home" />
                 <Button fx:id="registerButton" layoutX="426.0" layoutY="400.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="25.0" prefWidth="102.0" text="Register" />
-            <Label fx:id="forenameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="125.0" prefHeight="17.0" prefWidth="189.0" />
-            <Label fx:id="surnameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="125.0" prefHeight="17.0" prefWidth="189.0" />
-            <Label fx:id="passwordLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="240.0" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER" textOverrun="CLIP" />
-            <Label fx:id="confirmPasswordLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="240.0" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER" textOverrun="CLIP" />
-            <Label fx:id="dateLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="325.0" prefHeight="17.0" prefWidth="212.0" />
-            <Label fx:id="userIDLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="365.0" prefHeight="17.0" prefWidth="189.0" />
+                <Label fx:id="forenameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="125.0" prefHeight="17.0" prefWidth="189.0" />
+                <Label fx:id="surnameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="125.0" prefHeight="17.0" prefWidth="189.0" />
+                <Label fx:id="passwordLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="240.0" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER" textOverrun="CLIP" />
+                <Label fx:id="confirmPasswordLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="240.0" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER" textOverrun="CLIP" />
+                <Label fx:id="dateLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="213.0" layoutY="325.0" prefHeight="17.0" prefWidth="212.0" />
+                <Label fx:id="userIDLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="228.0" layoutY="365.0" prefHeight="17.0" prefWidth="189.0" />
             </children>
         </AnchorPane>
     </children>
