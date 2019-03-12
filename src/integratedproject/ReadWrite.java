@@ -29,7 +29,7 @@ public class ReadWrite {
      */
     public static boolean doesUsernameExist(String username) throws FileNotFoundException {
         try {
-            Scanner user = new Scanner(new File("UserData/" + username + ".txt"));
+            Scanner user = new Scanner(new File("src/UserData/" + username + ".txt"));
             return true;
         } catch (FileNotFoundException e) {
             return false;
@@ -45,7 +45,7 @@ public class ReadWrite {
     public static List<String> readTextFile(String username) throws FileNotFoundException {
         List<String> UserPass = new ArrayList<>();
 
-        Scanner input = new Scanner(new File("UserData/" + username + ".txt"));
+        Scanner input = new Scanner(new File("src/UserData/" + username + ".txt"));
         int counter = 0;
         while (input.hasNextLine() && counter < 2) {
             UserPass.add((input.nextLine()));
@@ -61,7 +61,7 @@ public class ReadWrite {
      */
     public static void writeToFile(String forename, String surname, String userID, String password, LocalDate dateOfBirth) throws IOException {
 
-        try (PrintWriter writer = new PrintWriter("UserData/" + userID + ".txt", "UTF-8")) {
+        try (PrintWriter writer = new PrintWriter("src/UserData/" + userID + ".txt", "UTF-8")) {
             writer.println(userID);
             writer.println(password);
             writer.println(forename);
@@ -75,7 +75,7 @@ public class ReadWrite {
     
     public static void createAppointmentFile(String comboSelection, String forename, String surname, String userID, LocalDate appointmentDate) throws IOException {
 
-        try (PrintWriter writer = new PrintWriter("UserAppointments/" + userID + ".txt", "UTF-8")) {
+        try (PrintWriter writer = new PrintWriter("src/UserAppointments/" + userID + ".txt", "UTF-8")) {
             writer.println(userID);
             writer.println(comboSelection);
             writer.println(forename);
