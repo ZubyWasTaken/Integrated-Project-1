@@ -25,7 +25,6 @@ import javafx.stage.StageStyle;
  */
 public class RegisterDocumentController implements Initializable {
 
-    //<editor-fold defaultstate="collapsed" desc="Variables">
     /*
      These variables below link the FXML labels and text fields
      with the code, allowing the code to manipulate them.
@@ -65,8 +64,6 @@ public class RegisterDocumentController implements Initializable {
 
     @FXML
     private Button registerButton;
-//</editor-fold>
-
 
     /*
      This code is executed when the 'Register' button is clicked in
@@ -95,8 +92,8 @@ public class RegisterDocumentController implements Initializable {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
-        String temp1 = forename.substring(0,2);
-        String temp2 = surname.substring(0,2);
+        String temp1 = forename.substring(0, 2);
+        String temp2 = surname.substring(0, 2);
         String userID = temp1 + temp2 + randomNum;
 
         /*

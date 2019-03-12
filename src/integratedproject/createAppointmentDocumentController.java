@@ -25,7 +25,6 @@ import javafx.stage.StageStyle;
  */
 public class createAppointmentDocumentController implements Initializable {
 
-    //<editor-fold defaultstate="collapsed" desc="Variables">
     /*
      These variables below link the FXML labels and text fields
      with the code, allowing the code to manipulate them.
@@ -60,12 +59,6 @@ public class createAppointmentDocumentController implements Initializable {
     @FXML
     private Label comboLabel;
 
-//</editor-fold>
-    //<editor-fold defaultstate="collapsed" desc="Button Methods">
-    /*
-     When the Home button in Register.fxml is clicked, it closes the window,
-     and re-opens Home.fxml
-     */
     @FXML
     public void exitButton(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
@@ -81,52 +74,67 @@ public class createAppointmentDocumentController implements Initializable {
 
     @FXML
     public void createAppointment(ActionEvent event) throws IOException {
-        String comboSelection = comboBox.getSelectionModel().getSelectedItem().toString();
+        String comboSelection = "";
+        try {
+            comboSelection = comboBox.getSelectionModel().getSelectedItem().toString();
+        } catch (Exception e) {
+            comboLabel.setText("Select type of appointment.");
+        }
         String forename = userForename.getText();
         String surname = userSurname.getText();
         String userID = userUserID.getText();
         LocalDate appointmentDate = dateAppointment.getValue();
         LocalDate dateNow = LocalDate.now();
 
-        if (comboSelection.length() == 0) {
-            System.out.println("Fill in forename");
-            comboLabel.setText("Please enter your forename.");
-        }
         if (forename.length() == 0) {
-            System.out.println("Fill in forename");
-            forenameLabel.setText("Please enter your forename.");
+            forenameLabel.setText("Enter forename.");
         }
         if (surname.length() == 0) {
-            System.out.println("Fill in surname");
-            surnameLabel.setText("Please enter your surname.");
+            surnameLabel.setText("Enter surname.");
         }
         if (userID.length() == 0) {
-            System.out.println("Fill in password");
-            userIDLabel.setText("Please enter your password.");
+            userIDLabel.setText("Enter user ID.");
         }
         if (appointmentDate == null) {
-            System.out.println("No valid date");
-            appointmentLabel.setText("Please confirm your Date of Birth.");
+            appointmentLabel.setText("Pick day for appointment.");
         }
-        
-        if (forename.length() != 0 && surname.length() != 0 && appointmentDate != null && userID.length() != 0 && appointmentDate.compareTo(dateNow) < 0) {
+
+        if (forename.length() != 0) {
+            forenameLabel.setText("");
+        }
+        if (surname.length() != 0) {
+            surnameLabel.setText("");
+        }
+        if (userID.length() != 0) {
+            userIDLabel.setText("");
+        }
+        if (comboSelection.length() > 0) {
+            comboLabel.setText("");
+        }
+        if (appointmentDate != null) {
+            appointmentLabel.setText("");
+
+        }
+        if (appointmentDate.compareTo(dateNow) > 0) {
+            appointmentLabel.setText("Appointment cannot be in the future.");
+        }
+
+        if (forename.length() > 0 && surname.length() > 0 && appointmentDate != null && userID.length() > 0 && appointmentDate.compareTo(dateNow) < 0) {
             ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);
+            System.out.println("pyah");
+
+//            Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
+//
+//            Scene scene = new Scene(root);
+//            Stage reg = new Stage(StageStyle.DECORATED);
+//            reg.setTitle("Home");
+//            reg.setScene(scene);
+//
+//            reg.show();
+//            ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
         }
-       
 
 //        ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);
-        
-
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
-
-        Scene scene = new Scene(root);
-        Stage reg = new Stage(StageStyle.DECORATED);
-        reg.setTitle("Home");
-        reg.setScene(scene);
-
-        reg.show();
-        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
-
     }
 
     @FXML
