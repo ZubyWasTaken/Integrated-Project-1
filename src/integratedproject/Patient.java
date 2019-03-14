@@ -15,26 +15,28 @@ public class Patient {
     private String surname;
     private String userID;
 
-    public void setForename(String string){
+    public void setForename(String string) {
         this.forename = string;
-    
+
     }
-    
-    public void setSurname(String string){
+
+    public void setSurname(String string) {
         this.surname = string;
     }
-    
-    public void setuserID(String string){
+
+    public void setuserID(String string) {
         String userID = string;
     }
-    
-    public String getForename(){
+
+    public String getForename() {
         return this.forename;
     }
-    public String getSurname(){
+
+    public String getSurname() {
         return this.surname;
     }
-    public String getuserID(){
+
+    public String getuserID() {
         return userID;
     }
 }

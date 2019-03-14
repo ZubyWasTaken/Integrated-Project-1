@@ -19,11 +19,11 @@
                     </font>
                 </Text>
                 <TextField fx:id="usernameUser" layoutX="155.0" layoutY="75.0" prefHeight="25.0" prefWidth="149.0" promptText="User ID" />
-                <Button layoutX="45.0" layoutY="316.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="25.0" prefWidth="100.0" text="Home" />
+                <PasswordField fx:id="passwordUser" layoutX="155.0" layoutY="190.0" promptText="Password" />
                 <Button layoutX="314.0" layoutY="316.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="25.0" prefWidth="100.0" text="Login" />
-            <Label fx:id="usernameUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="110.0" prefHeight="17.0" prefWidth="269.0" />
-            <Label fx:id="passwordUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="225.0" prefHeight="17.0" prefWidth="269.0" />
-            <PasswordField fx:id="passwordUser" layoutX="155.0" layoutY="190.0" promptText="Password" />
+                <Button layoutX="45.0" layoutY="316.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="25.0" prefWidth="100.0" text="Home" />
+                <Label fx:id="usernameUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="110.0" prefHeight="17.0" prefWidth="269.0" />
+                <Label fx:id="passwordUserLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="225.0" prefHeight="17.0" prefWidth="269.0" />       
             </children>
         </AnchorPane>
     </children>

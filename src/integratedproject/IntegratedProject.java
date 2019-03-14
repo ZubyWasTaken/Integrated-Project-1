@@ -31,6 +31,13 @@ public class IntegratedProject extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        /*
+         Combobox doesn't work (for some reason?) - Following line of code
+         is needed so it works
+         */
+        System.setProperty("glass.accessible.force", "false");
+        
+        
         launch(args);
     }
 

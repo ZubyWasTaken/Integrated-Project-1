@@ -75,7 +75,7 @@ public class createAppointmentDocumentController implements Initializable {
     @FXML
     public void createAppointment(ActionEvent event) throws IOException {
         Patient patient = new Patient();
-        
+
         String comboSelection = "";
         try {
             comboSelection = comboBox.getSelectionModel().getSelectedItem().toString();
@@ -124,22 +124,21 @@ public class createAppointmentDocumentController implements Initializable {
         if (forename.length() > 0 && surname.length() > 0 && appointmentDate != null && userID.length() > 0 && appointmentDate.compareTo(dateNow) < 0) {
 //            ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);
             System.out.println("pyah");
-            
-            String patientID = patient.getuserID();
-            System.out.println(patientID);
 
-//            Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
-//
-//            Scene scene = new Scene(root);
-//            Stage reg = new Stage(StageStyle.DECORATED);
-//            reg.setTitle("Home");
-//            reg.setScene(scene);
-//
-//            reg.show();
-//            ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+//            String patientID = patient.getuserID();
+//            System.out.println(patientID);
+            ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);
+            Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
+
+            Scene scene = new Scene(root);
+            Stage reg = new Stage(StageStyle.DECORATED);
+            reg.setTitle("Home");
+            reg.setScene(scene);
+
+            reg.show();
+            ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
         }
 
-//        ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);
     }
 
     @FXML

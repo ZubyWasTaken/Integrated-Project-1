@@ -24,8 +24,8 @@
                 <PasswordField fx:id="password" layoutX="94.0" layoutY="205.0" promptText="Password" />
                 <PasswordField fx:id="confirmPassword" layoutX="401.0" layoutY="205.0" promptText="Confirm Password" />
                 <DatePicker fx:id="DoB" layoutX="248.0" layoutY="290.0" prefHeight="25.0" prefWidth="149.0" promptText="Date of Birth" />
-                <Button layoutX="118.0" layoutY="400.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="25.0" prefWidth="102.0" text="Home" />
                 <Button fx:id="registerButton" layoutX="426.0" layoutY="400.0" mnemonicParsing="false" onAction="#registerButtonAction" prefHeight="25.0" prefWidth="102.0" text="Register" />
+                <Button layoutX="118.0" layoutY="400.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="25.0" prefWidth="102.0" text="Home" />
                 <Label fx:id="forenameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="125.0" prefHeight="17.0" prefWidth="189.0" />
                 <Label fx:id="surnameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="370.0" layoutY="125.0" prefHeight="17.0" prefWidth="189.0" />
                 <Label fx:id="passwordLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="240.0" prefHeight="17.0" prefWidth="212.0" textAlignment="CENTER" textOverrun="CLIP" />
