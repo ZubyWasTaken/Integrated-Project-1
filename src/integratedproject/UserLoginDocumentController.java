@@ -103,7 +103,6 @@ public class UserLoginDocumentController implements Initializable {
          */
         if (username.length() != 0) {
             if (ReadWrite.doesUsernameExist(username) == true) {
-                patient.setuserID(username);
                 System.out.println("Username Found");
                 List<String> testArray = ReadWrite.readTextFile(username);
 

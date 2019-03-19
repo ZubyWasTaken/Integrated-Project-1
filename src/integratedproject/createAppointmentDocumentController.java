@@ -102,31 +102,47 @@ public class createAppointmentDocumentController implements Initializable {
         }
 
         if (forename.length() != 0) {
-            forenameLabel.setText("");
+            if (!Patient.forename.equals(forename)) {
+                forenameLabel.setText("Incorrect forename.");
+            } else {
+                forenameLabel.setText("");
+            }
         }
+        
         if (surname.length() != 0) {
-            surnameLabel.setText("");
+            if (!Patient.surname.equals(surname)) {
+                surnameLabel.setText("Incorrect surname.");
+            } else {
+                surnameLabel.setText("");
+            }
         }
+        
         if (userID.length() != 0) {
-            userIDLabel.setText("");
+            if (!Patient.userID.equals(userID)) {
+                userIDLabel.setText("Incorrect user ID.");
+            } else {
+                userIDLabel.setText("");
+            }
         }
+        
         if (comboSelection.length() > 0) {
             comboLabel.setText("");
         }
+        
         if (appointmentDate != null) {
             appointmentLabel.setText("");
-
         }
+        
         if (appointmentDate.compareTo(dateNow) > 0) {
             appointmentLabel.setText("Appointment cannot be in the future.");
         }
 
         if (forename.length() > 0 && surname.length() > 0 && appointmentDate != null && userID.length() > 0 && appointmentDate.compareTo(dateNow) < 0) {
-//            ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);
-            System.out.println("pyah");
 
-//            String patientID = patient.getuserID();
-//            System.out.println(patientID);
+            System.out.println(Patient.userID);
+            System.out.println(Patient.forename);
+            System.out.println(Patient.surname);
+
             ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);
             Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
 
