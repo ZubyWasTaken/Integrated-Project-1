@@ -45,6 +45,12 @@ public class ViewAppointmentController implements Initializable {
     private Label lblDate;
 
     @FXML
+    private Label lblDisplay;
+
+    @FXML
+    private Button btnCancel;
+
+    @FXML
     public void viewAppointment(ActionEvent event) throws IOException, ParseException {
         String userID = Patient.userID;
         System.out.println(Patient.userID);
@@ -52,22 +58,23 @@ public class ViewAppointmentController implements Initializable {
         if (ReadWrite.doesAppointmentExist(userID) == true) {
 
             List<String> tempArray = ReadWrite.readAppointment(Patient.userID);
-            String appointmentType = tempArray.get(1);
-            String forename = tempArray.get(2);
-            String surname = tempArray.get(3);
-            String date = tempArray.get(4);
-
-            lblUserID.setText(userID);
-            lblAppointment.setText(appointmentType);
+            String appointmentType = tempArray.get(1);       
+            String date = tempArray.get(2);
+            
+            List<String> tempArray1 = ReadWrite.userForenameSurname(Patient.userID);
+            System.out.println(tempArray1);
+            String forename = tempArray1.get(2);
+            String surname = tempArray1.get(3);
+            
+            
             lblForename.setText(forename);
             lblSurname.setText(surname);
+            
+            lblUserID.setText(userID);
+            lblAppointment.setText(appointmentType);
             lblDate.setText(date);
         } else {
-            lblUserID.setText("User has not created an appointment.");
-            lblAppointment.setText("User has not created an appointment.");
-            lblForename.setText("User has not created an appointment.");
-            lblSurname.setText("User has not created an appointment.");
-            lblDate.setText("User has not created an appointment.");
+            lblDisplay.setText("You have no appointments.");
         }
 
     }
@@ -87,7 +94,32 @@ public class ViewAppointmentController implements Initializable {
 
     @FXML
     public void cancelAppointment(ActionEvent event) throws IOException {
+        String userID = Patient.userID;
 
+        if (ReadWrite.doesAppointmentExist(userID) == true) {
+            lblUserID.setText("");
+            lblAppointment.setText("");
+            lblForename.setText("");
+            lblSurname.setText("");
+            lblDate.setText("");
+
+            boolean deleted = ReadWrite.deleteAppointment(userID);
+            if (deleted) {
+                lblUserID.setText("");
+                lblAppointment.setText("");
+                lblForename.setText("");
+                lblSurname.setText("");
+                lblDate.setText("");
+                
+                lblDisplay.setText("Appointment successfully cancelled.");
+                btnCancel.setDisable(true);
+            } else{
+                lblDisplay.setText("Appointment failed to cancel.");
+            }
+
+        } else {
+            lblDisplay.setText("You have no appointment to cancel.");
+        }
     }
 
     @Override

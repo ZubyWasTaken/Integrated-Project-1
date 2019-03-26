@@ -81,18 +81,12 @@ public class CreateAppointmentController implements Initializable {
         } catch (Exception e) {
             comboLabel.setText("Select type of appointment.");
         }
-        String forename = userForename.getText();
-        String surname = userSurname.getText();
+        
         String userID = userUserID.getText();
         LocalDate appointmentDate = dateAppointment.getValue();
         LocalDate dateNow = LocalDate.now();
 
-        if (forename.length() == 0) {
-            forenameLabel.setText("Enter forename.");
-        }
-        if (surname.length() == 0) {
-            surnameLabel.setText("Enter surname.");
-        }
+        
         if (userID.length() == 0) {
             userIDLabel.setText("Enter user ID.");
         }
@@ -100,21 +94,6 @@ public class CreateAppointmentController implements Initializable {
             appointmentLabel.setText("Pick day for appointment.");
         }
 
-        if (forename.length() != 0) {
-            if (!Patient.forename.equals(forename)) {
-                forenameLabel.setText("Incorrect forename.");
-            } else {
-                forenameLabel.setText("");
-            }
-        }
-
-        if (surname.length() != 0) {
-            if (!Patient.surname.equals(surname)) {
-                surnameLabel.setText("Incorrect surname.");
-            } else {
-                surnameLabel.setText("");
-            }
-        }
 
         if (userID.length() != 0) {
             if (!Patient.userID.equals(userID)) {
@@ -136,13 +115,11 @@ public class CreateAppointmentController implements Initializable {
             appointmentLabel.setText("Appointment cannot be in the future.");
         }
 
-        if (forename.length() > 0 && surname.length() > 0 && appointmentDate != null && userID.length() > 0 && appointmentDate.compareTo(dateNow) < 0 && Patient.forename.equals(forename) && Patient.surname.equals(surname) && Patient.userID.equals(userID)) {
+        if (appointmentDate != null && userID.length() > 0 && appointmentDate.compareTo(dateNow) < 0 && Patient.userID.equals(userID)) {
 
             System.out.println(Patient.userID);
-            System.out.println(Patient.forename);
-            System.out.println(Patient.surname);
 
-            ReadWrite.createAppointmentFile(comboSelection, forename, surname, userID, appointmentDate);     
+            ReadWrite.createAppointmentFile(comboSelection, userID, appointmentDate);     
             Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
 
             Scene scene = new Scene(root);

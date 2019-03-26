@@ -9,6 +9,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +34,7 @@ public class ReadWrite {
     public static boolean doesUsernameExist(String username) throws FileNotFoundException {
         try {
             Scanner user = new Scanner(new File("src/UserData/" + username + ".txt"));
+            user.close();
             return true;
         } catch (FileNotFoundException e) {
             return false;
@@ -51,6 +56,21 @@ public class ReadWrite {
             UserPass.add((input.nextLine()));
             counter++;
         }
+        input.close();
+        return UserPass;
+
+    }
+    
+    public static List<String> userForenameSurname(String userID) throws FileNotFoundException {
+        List<String> UserPass = new ArrayList<>();
+
+        Scanner input = new Scanner(new File("src/UserData/" + userID + ".txt"));
+        int counter = 0;
+        while (input.hasNextLine() && counter < 4) {
+            UserPass.add((input.nextLine()));
+            counter++;
+        }
+        input.close();
         return UserPass;
 
     }
@@ -72,13 +92,11 @@ public class ReadWrite {
 
     }
 
-    public static void createAppointmentFile(String comboSelection, String forename, String surname, String userID, LocalDate appointmentDate) throws IOException {
+    public static void createAppointmentFile(String comboSelection, String userID, LocalDate appointmentDate) throws IOException {
 
         try (PrintWriter writer = new PrintWriter("src/UserAppointments/" + userID + ".txt", "UTF-8")) {
             writer.println(userID);
             writer.println(comboSelection);
-            writer.println(forename);
-            writer.println(surname);
             writer.println(appointmentDate);
             writer.close();
         }
@@ -90,10 +108,11 @@ public class ReadWrite {
 
         Scanner input = new Scanner(new File("src/UserAppointments/" + username + ".txt"));
         int counter = 0;
-        while (input.hasNextLine() && counter < 5) {
+        while (input.hasNextLine() && counter < 3) {
             appointment.add((input.nextLine()));
             counter++;
         }
+        input.close();
         return appointment;
 
     }
@@ -101,10 +120,25 @@ public class ReadWrite {
     public static boolean doesAppointmentExist(String username) {
         try {
             Scanner user = new Scanner(new File("src/UserAppointments/" + username + ".txt"));
+            user.close();
             return true;
         } catch (FileNotFoundException e) {
             return false;
         }
-        
+
     }
+
+    public static Boolean deleteAppointment(String username) throws IOException {
+
+        File file = new File("src/UserAppointments/" + username + ".txt");
+
+        try {
+            file.delete();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
 }

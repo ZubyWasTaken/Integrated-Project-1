@@ -18,7 +18,7 @@
                     </font>
                 </Text>
                 <Button layoutX="96.0" layoutY="484.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="38.0" prefWidth="128.0" text="Back" />
-            <Button layoutX="525.0" layoutY="484.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="38.0" prefWidth="128.0" text="Cancel Appointment" />
+            <Button fx:id="btnCancel" layoutX="525.0" layoutY="484.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="38.0" prefWidth="128.0" text="Cancel Appointment" />
             <Label layoutX="35.0" layoutY="111.0" prefHeight="31.0" prefWidth="198.0" text="User ID:">
                <font>
                   <Font size="21.0" />
@@ -70,6 +70,11 @@
                </font>
             </Label>
             <Button layoutX="304.0" layoutY="484.0" mnemonicParsing="false" onAction="#viewAppointment" prefHeight="38.0" prefWidth="128.0" text="View" />
+            <Label fx:id="lblDisplay" layoutX="344.0" layoutY="396.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </children>
