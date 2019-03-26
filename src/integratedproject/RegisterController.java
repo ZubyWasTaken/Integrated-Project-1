@@ -23,7 +23,7 @@ import javafx.stage.StageStyle;
  *
  * @author Zuby
  */
-public class RegisterDocumentController implements Initializable {
+public class RegisterController implements Initializable {
 
     /*
      These variables below link the FXML labels and text fields

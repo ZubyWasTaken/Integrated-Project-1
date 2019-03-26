@@ -17,7 +17,7 @@ import javafx.stage.StageStyle;
  *
  * @author Zuby
  */
-public class HomeDocumentController implements Initializable {
+public class HomeController implements Initializable {
 
     //<editor-fold defaultstate="collapsed" desc="Methods">
     /*

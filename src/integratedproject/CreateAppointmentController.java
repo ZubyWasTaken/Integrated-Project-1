@@ -23,7 +23,7 @@ import javafx.stage.StageStyle;
  *
  * @author Zuby
  */
-public class createAppointmentDocumentController implements Initializable {
+public class CreateAppointmentController implements Initializable {
 
     /*
      These variables below link the FXML labels and text fields

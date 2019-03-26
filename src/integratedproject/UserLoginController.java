@@ -21,7 +21,7 @@ import javafx.stage.StageStyle;
  *
  * @author Zuby
  */
-public class UserLoginDocumentController implements Initializable {
+public class UserLoginController implements Initializable {
 
     /*
      These variables below link the FXML labels and text fields
@@ -104,6 +104,7 @@ public class UserLoginDocumentController implements Initializable {
         if (username.length() != 0) {
             if (ReadWrite.doesUsernameExist(username) == true) {
                 System.out.println("Username Found");
+                Patient.userID = username;
                 List<String> testArray = ReadWrite.readTextFile(username);
 
                 if (passwrd.equals(testArray.get(1))) {

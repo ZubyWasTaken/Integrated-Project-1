@@ -21,7 +21,7 @@ import javafx.stage.StageStyle;
  *
  * @author Zuby
  */
-public class UserHomeDocumentController implements Initializable {
+public class UserHomeController implements Initializable {
 
     //<editor-fold defaultstate="collapsed" desc="Variables">
     /*
@@ -74,7 +74,14 @@ public class UserHomeDocumentController implements Initializable {
 
     @FXML
     public void viewAppointment(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/ViewAppointment.fxml"));
+        Scene scene = new Scene(root);
+        Stage reg = new Stage(StageStyle.DECORATED);
+        reg.setTitle("Create Appointment");
+        reg.setScene(scene);
 
+        reg.show();
+        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
     @Override
