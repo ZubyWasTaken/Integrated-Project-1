@@ -2,7 +2,11 @@ package integratedproject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -40,9 +44,6 @@ public class ViewAppointmentController implements Initializable {
     private TextField userUserID;
 
     @FXML
-    private DatePicker dateAppointment;
-
-    @FXML
     private ComboBox comboBox;
 
     @FXML
@@ -59,17 +60,29 @@ public class ViewAppointmentController implements Initializable {
 
     @FXML
     private Label comboLabel;
-    
+
     @FXML
-    public void viewAppointment(ActionEvent event) throws IOException {
-        
+    public void viewAppointment(ActionEvent event) throws IOException, ParseException {
+
         List<String> tempArray = ReadWrite.readAppointment(Patient.userID);
-        
-        System.out.println(tempArray.get(0));
-        System.out.println(tempArray.get(1));
-        System.out.println(tempArray.get(2));
-        System.out.println(tempArray.get(3));
-        System.out.println(tempArray.get(4));
+
+        String userID = tempArray.get(0);
+        String appointmentType = tempArray.get(1);
+        String forename = tempArray.get(2);
+        String surname = tempArray.get(3);
+
+        String tempdate = tempArray.get(4);
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        Date date = simpleDateFormat.parse(tempdate);
+       
+
+        System.out.println(userID);
+        System.out.println(appointmentType);
+        System.out.println(forename);
+        System.out.println(surname);
+        System.out.println(date);
+
     }
 
     @FXML

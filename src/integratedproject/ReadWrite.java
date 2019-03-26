@@ -87,11 +87,11 @@ public class ReadWrite {
     }
     
     public static List<String> readAppointment(String username) throws FileNotFoundException {
-        List<String> appointment = new ArrayList<>();
+        List<String> appointment = new ArrayList<>(5);
 
         Scanner input = new Scanner(new File("src/UserAppointments/" + username + ".txt"));
         int counter = 0;
-        while (input.hasNextLine() && counter < 4) {
+        while (input.hasNextLine() && counter < 5) {
             appointment.add((input.nextLine()));
             counter++;
         }
