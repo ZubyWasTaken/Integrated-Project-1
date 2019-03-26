@@ -1,14 +1,13 @@
 package integratedproject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,11 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -35,53 +30,45 @@ public class ViewAppointmentController implements Initializable {
      with the code, allowing the code to manipulate them.
      */
     @FXML
-    private TextField userForename;
+    private Label lblUserID;
 
     @FXML
-    private TextField userSurname;
+    private Label lblAppointment;
 
     @FXML
-    private TextField userUserID;
+    private Label lblForename;
 
     @FXML
-    private ComboBox comboBox;
+    private Label lblSurname;
 
     @FXML
-    private Label forenameLabel;
-
-    @FXML
-    private Label surnameLabel;
-
-    @FXML
-    private Label userIDLabel;
-
-    @FXML
-    private Label appointmentLabel;
-
-    @FXML
-    private Label comboLabel;
+    private Label lblDate;
 
     @FXML
     public void viewAppointment(ActionEvent event) throws IOException, ParseException {
+        String userID = Patient.userID;
+        System.out.println(Patient.userID);
 
-        List<String> tempArray = ReadWrite.readAppointment(Patient.userID);
+        if (ReadWrite.doesAppointmentExist(userID) == true) {
 
-        String userID = tempArray.get(0);
-        String appointmentType = tempArray.get(1);
-        String forename = tempArray.get(2);
-        String surname = tempArray.get(3);
+            List<String> tempArray = ReadWrite.readAppointment(Patient.userID);
+            String appointmentType = tempArray.get(1);
+            String forename = tempArray.get(2);
+            String surname = tempArray.get(3);
+            String date = tempArray.get(4);
 
-        String tempdate = tempArray.get(4);
-        String pattern = "yyyy-MM-dd";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        Date date = simpleDateFormat.parse(tempdate);
-       
-
-        System.out.println(userID);
-        System.out.println(appointmentType);
-        System.out.println(forename);
-        System.out.println(surname);
-        System.out.println(date);
+            lblUserID.setText(userID);
+            lblAppointment.setText(appointmentType);
+            lblForename.setText(forename);
+            lblSurname.setText(surname);
+            lblDate.setText(date);
+        } else {
+            lblUserID.setText("User has not created an appointment.");
+            lblAppointment.setText("User has not created an appointment.");
+            lblForename.setText("User has not created an appointment.");
+            lblSurname.setText("User has not created an appointment.");
+            lblDate.setText("User has not created an appointment.");
+        }
 
     }
 

@@ -18,10 +18,6 @@
                     </font>
                 </Text>
                 <Button layoutX="96.0" layoutY="484.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="38.0" prefWidth="128.0" text="Back" />
-                <Label layoutX="29.0" layoutY="126.0" prefHeight="17.0" prefWidth="212.0" text="" />
-                <Label layoutX="269.0" layoutY="126.0" prefHeight="17.0" prefWidth="182.0" text="" />
-                <Label layoutX="498.0" layoutY="126.0" prefHeight="17.0" prefWidth="182.0" text="" />
-                <Label layoutX="269.0" layoutY="211.0" prefHeight="17.0" prefWidth="182.0" text="" />
             <Button layoutX="525.0" layoutY="484.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="38.0" prefWidth="128.0" text="Cancel Appointment" />
             <Label layoutX="35.0" layoutY="111.0" prefHeight="31.0" prefWidth="198.0" text="User ID:">
                <font>
@@ -48,27 +44,27 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label layoutX="264.0" layoutY="111.0">
+            <Label fx:id="lblUserID" layoutX="264.0" layoutY="111.0">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label layoutX="264.0" layoutY="172.0">
+            <Label fx:id="lblAppointment" layoutX="264.0" layoutY="172.0">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label layoutX="264.0" layoutY="228.0">
+            <Label fx:id="lblForename" layoutX="264.0" layoutY="228.0">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label layoutX="264.0" layoutY="280.0">
+            <Label fx:id="lblSurname" layoutX="264.0" layoutY="280.0">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label layoutX="264.0" layoutY="335.0">
+            <Label fx:id="lblDate" layoutX="264.0" layoutY="335.0">
                <font>
                   <Font size="21.0" />
                </font>

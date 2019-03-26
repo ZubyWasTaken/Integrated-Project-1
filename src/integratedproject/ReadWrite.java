@@ -71,8 +71,7 @@ public class ReadWrite {
         }
 
     }
-    
-    
+
     public static void createAppointmentFile(String comboSelection, String forename, String surname, String userID, LocalDate appointmentDate) throws IOException {
 
         try (PrintWriter writer = new PrintWriter("src/UserAppointments/" + userID + ".txt", "UTF-8")) {
@@ -85,7 +84,7 @@ public class ReadWrite {
         }
 
     }
-    
+
     public static List<String> readAppointment(String username) throws FileNotFoundException {
         List<String> appointment = new ArrayList<>(5);
 
@@ -98,7 +97,14 @@ public class ReadWrite {
         return appointment;
 
     }
-    
-    
 
+    public static boolean doesAppointmentExist(String username) {
+        try {
+            Scanner user = new Scanner(new File("src/UserAppointments/" + username + ".txt"));
+            return true;
+        } catch (FileNotFoundException e) {
+            return false;
+        }
+        
+    }
 }
