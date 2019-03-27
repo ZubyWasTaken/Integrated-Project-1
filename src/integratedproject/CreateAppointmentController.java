@@ -1,5 +1,4 @@
 package integratedproject;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -14,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,12 +28,6 @@ public class CreateAppointmentController implements Initializable {
      with the code, allowing the code to manipulate them.
      */
     @FXML
-    private TextField userForename;
-
-    @FXML
-    private TextField userSurname;
-
-    @FXML
     private TextField userUserID;
 
     @FXML
@@ -43,12 +35,6 @@ public class CreateAppointmentController implements Initializable {
 
     @FXML
     private ComboBox comboBox;
-
-    @FXML
-    private Label forenameLabel;
-
-    @FXML
-    private Label surnameLabel;
 
     @FXML
     private Label userIDLabel;
@@ -117,8 +103,6 @@ public class CreateAppointmentController implements Initializable {
 
         if (appointmentDate != null && userID.length() > 0 && appointmentDate.compareTo(dateNow) < 0 && Patient.userID.equals(userID)) {
 
-            System.out.println(Patient.userID);
-
             ReadWrite.createAppointmentFile(comboSelection, userID, appointmentDate);     
             Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
 
@@ -143,7 +127,6 @@ public class CreateAppointmentController implements Initializable {
     ) {
         comboBox.getItems().clear();
         comboBox.getItems().addAll("Physiotherapy", "Acupuncture", "Sports Massage", "Hairdressing", "Spa");
-//        comboBox.getSelectionModel().select("Physiotherapy");
     }
 
 }

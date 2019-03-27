@@ -102,14 +102,11 @@ public class UserLoginController implements Initializable {
          it prompts you that the username does not exist.
          */
         if (username.length() != 0) {
-            if (ReadWrite.doesUsernameExist(username) == true) {
-                System.out.println("Username Found");
+            if (ReadWrite.doesUsernameExist(username) == true) {              
                 Patient.userID = username;
                 List<String> testArray = ReadWrite.readTextFile(username);
 
                 if (passwrd.equals(testArray.get(1))) {
-                    System.out.println("Password matches username");
-
                     Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
 
                     Scene scene = new Scene(root);
@@ -121,12 +118,10 @@ public class UserLoginController implements Initializable {
                     ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
                 }
                 if (!passwrd.equals(testArray.get(1))) {
-                    System.out.println("Password does not match!");
                     usernameUserLabel.setText("Username/Password is incorrect");
                     passwordUserLabel.setText("Username/Password is incorrect");
                 }
             } else {
-                System.out.println("Username Not Found");
                 usernameUserLabel.setText("Username does not exist.");
             }
         }

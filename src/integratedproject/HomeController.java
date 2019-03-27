@@ -1,5 +1,4 @@
 package integratedproject;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,8 +17,6 @@ import javafx.stage.StageStyle;
  * @author Zuby
  */
 public class HomeController implements Initializable {
-
-    //<editor-fold defaultstate="collapsed" desc="Methods">
     /*
      Method to close the current window, with the mouseclick passed in as an
      argument .
@@ -47,9 +44,7 @@ public class HomeController implements Initializable {
         reg.setScene(scene);
         reg.show();
     }
-//</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Buttons Methods">
     /* Finds 'User Register' button and calls loadRegister() method and then
      calls closeWindow() method, and passes the event (mouseclick) into it.*/
     @FXML
@@ -74,7 +69,6 @@ public class HomeController implements Initializable {
 //        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
         closeWindow(event);
     }
-//</editor-fold>
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -83,8 +83,6 @@ public class RegisterController implements Initializable {
         LocalDate dateOfBirth = DoB.getValue();
         LocalDate date = LocalDate.now();
 
-        Patient patient = new Patient();
-
         /*
          This is to affix a random number to the user's forename and surname
          to create a unique userID.

@@ -1,13 +1,10 @@
 package integratedproject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,7 +59,7 @@ public class ViewAppointmentController implements Initializable {
             String date = tempArray.get(2);
             
             List<String> tempArray1 = ReadWrite.userForenameSurname(Patient.userID);
-            System.out.println(tempArray1);
+            
             String forename = tempArray1.get(2);
             String surname = tempArray1.get(3);
             
