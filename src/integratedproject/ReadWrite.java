@@ -90,7 +90,7 @@ public class ReadWrite {
 
     public static void createAppointmentFile(String appointmentID ,String comboSelection, String userID, LocalDate appointmentDate) throws IOException {
 
-        try (PrintWriter writer = new PrintWriter("src/UserAppointments/" + userID + ".txt", "UTF-8")) {
+        try (PrintWriter writer = new PrintWriter("src/UserAppointments/" + appointmentID + ".txt", "UTF-8")) {
             writer.println(appointmentID);
             writer.println(userID);
             writer.println(comboSelection);
