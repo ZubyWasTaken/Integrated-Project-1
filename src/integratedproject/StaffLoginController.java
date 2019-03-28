@@ -77,12 +77,12 @@ public class StaffLoginController implements Initializable {
         }
 
         if (username.length() != 0) {
-            if (ReadWrite.doesUsernameExist(username) == true) {              
+            if (StaffReadWrite.doesUsernameExist(username) == true) {              
                 Patient.userID = username;
-                List<String> testArray = ReadWrite.readTextFile(username);
+                List<String> testArray = StaffReadWrite.readStaffData(username);
 
                 if (passwrd.equals(testArray.get(1))) {
-                    Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
+                    Parent root = FXMLLoader.load(getClass().getResource("FXML/Home.fxml"));
 
                     Scene scene = new Scene(root);
                     Stage reg = new Stage(StageStyle.DECORATED);
