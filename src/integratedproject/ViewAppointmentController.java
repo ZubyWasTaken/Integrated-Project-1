@@ -83,8 +83,23 @@ public class ViewAppointmentController implements Initializable {
         for (int i = 0; i < newFiles.length; i++) {
             newFiles[i] = files[i].replace(toDelete, "");
         }
-        
+
         return Arrays.toString(newFiles);
+    }
+
+    private static void returnFile() {
+        String parentFolderPath = "src/UserAppointments/";
+        String fileName = "Hai61.txt";
+        File parent = new File(parentFolderPath);
+        for (File subFolder : parent.listFiles()) {
+            if (subFolder.isDirectory()) {
+                File f = new File(subFolder, fileName);
+                if (f.exists()) {
+                    System.out.println("Found");
+                }
+            }
+        }
+
     }
 
     @FXML
@@ -94,8 +109,8 @@ public class ViewAppointmentController implements Initializable {
 
 //        String[] files = ReturnAppointmentsFiles();
         String files = removeTXT();
-        System.out.println(files);
-
+//        System.out.println(files);
+        returnFile();
 //        if (ReadWrite.doesAppointmentExist(userID)
 //                == true) {
 //
