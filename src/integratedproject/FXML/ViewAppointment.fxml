@@ -11,20 +11,20 @@
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="388.0" prefWidth="736.0" VBox.vgrow="ALWAYS">
             <children>
+                <Button layoutX="96.0" layoutY="484.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="38.0" prefWidth="128.0" text="Back" />
+            <Button fx:id="btnCancel" layoutX="525.0" layoutY="484.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="38.0" prefWidth="128.0" text="Cancel Appointment" />
+            <Label layoutX="35.0" layoutY="135.0" prefHeight="31.0" prefWidth="198.0" text="User ID:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
             
                 <Text layoutX="224.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Appointment">
                     <font>
                         <Font size="35.0" />
                     </font>
                 </Text>
-                <Button layoutX="96.0" layoutY="484.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="38.0" prefWidth="128.0" text="Back" />
-            <Button fx:id="btnCancel" layoutX="525.0" layoutY="484.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="38.0" prefWidth="128.0" text="Cancel Appointment" />
-            <Label layoutX="35.0" layoutY="111.0" prefHeight="31.0" prefWidth="198.0" text="User ID:">
-               <font>
-                  <Font size="21.0" />
-               </font>
-            </Label>
-            <Label layoutX="35.0" layoutY="172.0" prefHeight="31.0" prefWidth="205.0" text="Type of Appointment:">
+            <Label layoutX="35.0" layoutY="187.0" prefHeight="31.0" prefWidth="205.0" text="Type of Appointment:">
                <font>
                   <Font size="21.0" />
                </font>
@@ -44,12 +44,12 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label fx:id="lblUserID" layoutX="264.0" layoutY="111.0">
+            <Label fx:id="lblUserID" layoutX="264.0" layoutY="135.0">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label fx:id="lblAppointment" layoutX="264.0" layoutY="172.0">
+            <Label fx:id="lblAppointment" layoutX="264.0" layoutY="187.0">
                <font>
                   <Font size="21.0" />
                </font>
@@ -69,12 +69,12 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label layoutX="37.0" layoutY="396.0" prefHeight="31.0" prefWidth="212.0" text="Status:">
+            <Label layoutX="35.0" layoutY="378.0" prefHeight="31.0" prefWidth="212.0" text="Status:">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <Label fx:id="lblStatus" layoutX="264.0" layoutY="396.0">
+            <Label fx:id="lblStatus" layoutX="262.0" layoutY="378.0">
                <font>
                   <Font size="21.0" />
                </font>
@@ -84,7 +84,28 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Button layoutX="304.0" layoutY="484.0" mnemonicParsing="false" onAction="#viewAppointment" prefHeight="38.0" prefWidth="128.0" text="View" />
+            <Label layoutX="35.0" layoutY="97.0" prefHeight="31.0" prefWidth="198.0" text="Appointment ID:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblAppointmentID" layoutX="264.0" layoutY="97.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="423.0" prefHeight="31.0" prefWidth="212.0" text="Appointment Time:">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTime" layoutX="262.0" layoutY="423.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Button layoutX="304.0" layoutY="484.0" mnemonicParsing="false" onAction="#nextAppointment" prefHeight="38.0" prefWidth="128.0" text="Next Appointment" />
+           
             </children>
         </AnchorPane>
     </children>

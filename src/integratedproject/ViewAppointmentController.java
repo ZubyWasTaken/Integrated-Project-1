@@ -1,7 +1,9 @@
 package integratedproject;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
@@ -40,6 +42,9 @@ public class ViewAppointmentController implements Initializable {
     private Label lblAppointment;
 
     @FXML
+    private Label lblAppointmentID;
+
+    @FXML
     private Label lblForename;
 
     @FXML
@@ -55,43 +60,59 @@ public class ViewAppointmentController implements Initializable {
     private Label lblStatus;
 
     @FXML
-    private Button btnCancel;
-
-
+    private Label lblTime;
 
     @FXML
-    public void viewAppointment(ActionEvent event) throws IOException, ParseException {
-        String userID = Patient.userID;
-        System.out.println(Patient.userID);
-        
-//        if (ReadWrite.doesAppointmentExist(userID)
-//                == true) {
-//
-//            List<String> tempArray = ReadWrite.readAppointment(Patient.userID);
-//            String appointmentType = tempArray.get(1);
-//            String date = tempArray.get(2);
-//            String status = tempArray.get(3);
-//
-//            if (status.isEmpty()) {
-//                lblStatus.setText("Appointment not done.");
-//            } else {
-//                lblStatus.setText(status);
-//            }
-//
-//            List<String> tempArray1 = ReadWrite.userForenameSurname(Patient.userID);
-//
-//            String forename = tempArray1.get(2);
-//            String surname = tempArray1.get(3);
-//
-//            lblForename.setText(forename);
-//            lblSurname.setText(surname);
-//
-//            lblUserID.setText(userID);
-//            lblAppointment.setText(appointmentType);
-//            lblDate.setText(date);
-//        } else {
-//            lblDisplay.setText("You have no appointments.");
-//        }
+    private Button btnCancel;
+
+    @FXML
+    public void nextAppointment(ActionEvent event) throws IOException {
+        List<List<String>> appointments = ReadWrite.returnAppointment();
+        int maxCounter = appointments.size();
+        try {
+
+            Patient.counter++;
+            if (Patient.counter == maxCounter) {
+                Patient.counter = 0;
+            }
+            List<String> currentSelection = ReadWrite.displayAppointment();
+            
+            String[] currentAppointment = currentSelection.toArray(new String[currentSelection.size()]);
+
+
+            String appointmentID = currentAppointment[0];
+            String appointmentType = currentAppointment[1];
+            String userID = currentAppointment[2];
+            String date = currentAppointment[3];
+            String timeAppointment = currentAppointment[4];
+            String status = currentAppointment[5];
+
+            if (status.equals(" ")) {
+                lblStatus.setText("Appointment not done.");
+            } else {
+                lblStatus.setText(status);
+            }
+
+            List<String> tempArray1 = ReadWrite.userForenameSurname(Patient.userID);
+
+            String forename = tempArray1.get(2);
+            String surname = tempArray1.get(3);
+
+            lblForename.setText(forename);
+            lblSurname.setText(surname);
+
+            lblUserID.setText(userID);
+            lblAppointmentID.setText(appointmentID);
+            lblAppointment.setText(appointmentType);
+            lblTime.setText(timeAppointment);
+            lblDate.setText(date);
+//            
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("error");
+//            Patient.counter = 0;
+        }
+
     }
 
     @FXML

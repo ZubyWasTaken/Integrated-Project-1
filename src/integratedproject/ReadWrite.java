@@ -5,14 +5,18 @@
  */
 package integratedproject;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -97,12 +101,10 @@ public class ReadWrite {
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter pw = new PrintWriter(bw);
 
-        pw.println(appointmentID + "," + comboSelection + "," + userID + "," + appointmentDate + "," + appointmentTime);
-        
+        pw.println(appointmentID + "," + comboSelection + "," + userID + "," + appointmentDate + "," + appointmentTime + "," + "");
+
         pw.flush();
         pw.close();
-
-        
 
     }
 
@@ -141,6 +143,38 @@ public class ReadWrite {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static Array[] getDetails(List<String> currentSelections) {
+        
+        
+        
+        return null;
+
+    }
+
+    public static List<List<String>> returnAppointment() throws FileNotFoundException, IOException {
+        List<List<String>> records = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("src/UserAppointments/" + Patient.userID + ".txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                records.add(Arrays.asList(values));
+            }
+        }
+        return records;
+    }
+
+    public static List<String> displayAppointment() throws IOException {
+        List<List<String>> records = returnAppointment();
+        int counter = Patient.counter;
+
+        try {
+            return records.get(counter);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("testtest");
+        }
+        return null;
     }
 
 }
