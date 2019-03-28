@@ -2,6 +2,7 @@ package integratedproject;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -72,6 +73,17 @@ public class CreateAppointmentController implements Initializable {
         LocalDate appointmentDate = dateAppointment.getValue();
         LocalDate dateNow = LocalDate.now();
 
+        int max = 1000;
+        int min = 1;
+        Random rand = new Random();
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        
+        String appointmentPrefix = comboSelection.substring(0, 3);
+        
+        String appointmentID = appointmentPrefix + randomNum;
+        
+        System.out.println(appointmentID);
+        
         
         if (userID.length() == 0) {
             userIDLabel.setText("Enter user ID.");
@@ -103,7 +115,7 @@ public class CreateAppointmentController implements Initializable {
 
         if (appointmentDate != null && userID.length() > 0 && appointmentDate.compareTo(dateNow) < 0 && Patient.userID.equals(userID)) {
 
-            ReadWrite.createAppointmentFile(comboSelection, userID, appointmentDate);     
+            ReadWrite.createAppointmentFile(appointmentID ,comboSelection, userID, appointmentDate);     
             Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
 
             Scene scene = new Scene(root);
