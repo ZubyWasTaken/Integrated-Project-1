@@ -88,13 +88,14 @@ public class ReadWrite {
 
     }
 
-    public static void createAppointmentFile(String appointmentID ,String comboSelection, String userID, LocalDate appointmentDate) throws IOException {
+    public static void createAppointmentFile(String appointmentID ,String comboSelection, String userID, LocalDate appointmentDate, String appointmentTime) throws IOException {
 
         try (PrintWriter writer = new PrintWriter("src/UserAppointments/" + appointmentID + ".txt", "UTF-8")) {
             writer.println(appointmentID);
             writer.println(userID);
             writer.println(comboSelection);
             writer.println(appointmentDate);
+            writer.println(appointmentTime);
             writer.println("");
             writer.close();
         }

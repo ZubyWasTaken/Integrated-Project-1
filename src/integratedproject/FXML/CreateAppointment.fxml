@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="227.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="integratedproject.CreateAppointmentController">
+<VBox prefHeight="302.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="integratedproject.CreateAppointmentController">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="309.0" prefWidth="736.0" VBox.vgrow="ALWAYS">
             <children>
@@ -23,11 +23,13 @@
                 <DatePicker fx:id="dateAppointment" layoutX="29.0" layoutY="89.0" prefHeight="25.0" prefWidth="182.0" promptText="Date of Appointment" />
                 <ComboBox fx:id="comboBox" layoutX="269.0" layoutY="89.0" prefHeight="25.0" prefWidth="182.0" promptText="Type of Appointment" />
                 <TextField fx:id="userUserID" layoutX="498.0" layoutY="89.0" prefHeight="25.0" prefWidth="182.0" promptText="User ID" />
-                <Button layoutX="407.0" layoutY="174.0" mnemonicParsing="false" onAction="#createAppointment" prefHeight="25.0" prefWidth="182.0" text=" Create Appointment" />
-                <Button layoutX="120.0" layoutY="174.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="17.0" prefWidth="182.0" text="Exit" />
+                <Button layoutX="407.0" layoutY="226.0" mnemonicParsing="false" onAction="#createAppointment" prefHeight="25.0" prefWidth="182.0" text=" Create Appointment" />
+                <Button layoutX="120.0" layoutY="226.0" mnemonicParsing="false" onAction="#exitButton" prefHeight="17.0" prefWidth="182.0" text="Exit" />
                 <Label fx:id="appointmentLabel" layoutX="29.0" layoutY="126.0" prefHeight="17.0" prefWidth="212.0" text="" />
                 <Label fx:id="comboLabel" layoutX="269.0" layoutY="126.0" prefHeight="17.0" prefWidth="182.0" text="" />
                 <Label fx:id="userIDLabel" layoutX="498.0" layoutY="126.0" prefHeight="17.0" prefWidth="182.0" text="" />
+            <ComboBox fx:id="timeAppointment" layoutX="29.0" layoutY="151.0" prefHeight="25.0" prefWidth="182.0" promptText="Appointment Time" />
+            <Label fx:id="lblAppointment" layoutX="29.0" layoutY="188.0" prefHeight="17.0" prefWidth="212.0" text="" />
             </children>
         </AnchorPane>
     </children>
