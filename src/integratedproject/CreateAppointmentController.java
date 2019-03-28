@@ -178,18 +178,19 @@ public class CreateAppointmentController implements Initializable {
             appointmentLabel.setText("");
         }
 
-//        if (appointmentDate.compareTo(dateNow) > 0) {
-//            appointmentLabel.setText("Appointment cannot be in the future.");
-//        }
+        
         try {
-            if (appointmentDate.compareTo(dateNow) > 0) {
-                appointmentLabel.setText("Appointment cannot be in the future.");
+            if (appointmentDate.compareTo(dateNow) < 0) {
+                appointmentLabel.setText("Appointment cannot be in the past.");
             }
         } catch (NullPointerException e) {
-            appointmentLabel.setText("Appointment cannot be in the future.");
+            appointmentLabel.setText("Appointment cannot be in the past.");
+        }
+        if (appointmentDate.compareTo(dateNow) > 0) {
+            appointmentLabel.setText("");
         }
 
-        if (appointmentDate != null && userID.length() > 0 && appointmentDate.compareTo(dateNow) < 0 && Patient.userID.equals(userID) && !appointmentTime.isEmpty() && !appointmentTime.equals("-1")) {
+        if (appointmentDate != null && userID.length() > 0 && appointmentDate.compareTo(dateNow) > 0 && Patient.userID.equals(userID) && !appointmentTime.isEmpty() && !appointmentTime.equals("-1")) {
 
             ReadWrite.createAppointmentFile(appointmentID, comboSelection, userID, appointmentDate, appointmentTime);
             Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));

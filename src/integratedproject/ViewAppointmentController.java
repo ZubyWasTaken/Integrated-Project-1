@@ -77,15 +77,22 @@ public class ViewAppointmentController implements Initializable {
             }
             List<String> currentSelection = ReadWrite.displayAppointment();
             
-            String[] currentAppointment = currentSelection.toArray(new String[currentSelection.size()]);
+//            String[] currentAppointment = currentSelection.toArray(new String[currentSelection.size()]);
 
 
-            String appointmentID = currentAppointment[0];
-            String appointmentType = currentAppointment[1];
-            String userID = currentAppointment[2];
-            String date = currentAppointment[3];
-            String timeAppointment = currentAppointment[4];
-            String status = currentAppointment[5];
+//            String appointmentID = currentAppointment[0];
+//            String appointmentType = currentAppointment[1];
+//            String userID = currentAppointment[2];
+//            String date = currentAppointment[3];
+//            String timeAppointment = currentAppointment[4];
+//            String status = currentAppointment[5];
+            
+            String appointmentID = currentSelection.get(0);
+            String appointmentType = currentSelection.get(1);
+            String userID = currentSelection.get(2);
+            String date = currentSelection.get(3);
+            String timeAppointment = currentSelection.get(4);
+            String status = currentSelection.get(5);
 
             if (status.equals(" ")) {
                 lblStatus.setText("Appointment not done.");
@@ -106,7 +113,7 @@ public class ViewAppointmentController implements Initializable {
             lblAppointment.setText(appointmentType);
             lblTime.setText(timeAppointment);
             lblDate.setText(date);
-//            
+            
 
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("error");
