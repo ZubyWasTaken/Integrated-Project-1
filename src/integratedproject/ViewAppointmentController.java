@@ -1,10 +1,16 @@
 package integratedproject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,47 +49,67 @@ public class ViewAppointmentController implements Initializable {
 
     @FXML
     private Label lblDisplay;
-    
+
     @FXML
     private Label lblStatus;
 
     @FXML
     private Button btnCancel;
 
+    private static String[] ReturnAppointmentsFiles() throws FileNotFoundException {
+        File path = new File("src/UserAppointments");
+        Collection<String> files = new ArrayList<>();
+
+        if (path.isDirectory()) {
+            File[] listFiles = path.listFiles();
+
+            for (File file : listFiles) {
+                if (file.isFile()) {
+                    files.add(file.getName());
+                }
+            }
+        }
+
+        return files.toArray(new String[]{});
+
+    }
+
     @FXML
     public void viewAppointment(ActionEvent event) throws IOException, ParseException {
         String userID = Patient.userID;
         System.out.println(Patient.userID);
 
-        if (ReadWrite.doesAppointmentExist(userID) == true) {
+        String[] files = ReturnAppointmentsFiles();
+        System.out.println(files[2]);
 
-            List<String> tempArray = ReadWrite.readAppointment(Patient.userID);
-            String appointmentType = tempArray.get(1);       
-            String date = tempArray.get(2);
-            String status = tempArray.get(3);
-            
-            if(status.isEmpty()){
-                lblStatus.setText("Appointment not done.");
-            }else{
-                lblStatus.setText(status);
-            }
-            
-            List<String> tempArray1 = ReadWrite.userForenameSurname(Patient.userID);
-            
-            String forename = tempArray1.get(2);
-            String surname = tempArray1.get(3);
-            
-            
-            lblForename.setText(forename);
-            lblSurname.setText(surname);
-            
-            lblUserID.setText(userID);
-            lblAppointment.setText(appointmentType);
-            lblDate.setText(date);
-        } else {
-            lblDisplay.setText("You have no appointments.");
-        }
-
+//        if (ReadWrite.doesAppointmentExist(userID)
+//                == true) {
+//
+//            List<String> tempArray = ReadWrite.readAppointment(Patient.userID);
+//            String appointmentType = tempArray.get(1);
+//            String date = tempArray.get(2);
+//            String status = tempArray.get(3);
+//
+//            if (status.isEmpty()) {
+//                lblStatus.setText("Appointment not done.");
+//            } else {
+//                lblStatus.setText(status);
+//            }
+//
+//            List<String> tempArray1 = ReadWrite.userForenameSurname(Patient.userID);
+//
+//            String forename = tempArray1.get(2);
+//            String surname = tempArray1.get(3);
+//
+//            lblForename.setText(forename);
+//            lblSurname.setText(surname);
+//
+//            lblUserID.setText(userID);
+//            lblAppointment.setText(appointmentType);
+//            lblDate.setText(date);
+//        } else {
+//            lblDisplay.setText("You have no appointments.");
+//        }
     }
 
     @FXML
@@ -117,10 +143,10 @@ public class ViewAppointmentController implements Initializable {
                 lblForename.setText("");
                 lblSurname.setText("");
                 lblDate.setText("");
-                
+
                 lblDisplay.setText("Appointment successfully cancelled.");
                 btnCancel.setDisable(true);
-            } else{
+            } else {
                 lblDisplay.setText("Appointment failed to cancel.");
             }
 

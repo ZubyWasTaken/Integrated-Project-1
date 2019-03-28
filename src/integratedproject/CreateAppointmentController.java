@@ -89,7 +89,7 @@ public class CreateAppointmentController implements Initializable {
     private String TimeAfterNoon() {
         Random rand = new Random();
         String appointment;
-        
+
         int maxHour = 5;
         int minHour = 1;
         int randomHour = rand.nextInt((maxHour - minHour) + 1) + minHour;
@@ -133,6 +133,7 @@ public class CreateAppointmentController implements Initializable {
         } catch (Exception e) {
             lblAppointment.setText("Select time of appointment.");
         }
+        
         String appointmentTime = "";
         if (appointmentString.equals("Before Noon")) {
 
