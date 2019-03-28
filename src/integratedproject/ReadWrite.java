@@ -5,8 +5,10 @@
  */
 package integratedproject;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
@@ -56,7 +58,7 @@ public class ReadWrite {
         return UserPass;
 
     }
-    
+
     public static List<String> userForenameSurname(String userID) throws FileNotFoundException {
         List<String> UserPass = new ArrayList<>();
 
@@ -88,17 +90,19 @@ public class ReadWrite {
 
     }
 
-    public static void createAppointmentFile(String appointmentID ,String comboSelection, String userID, LocalDate appointmentDate, String appointmentTime) throws IOException {
+    public static void createAppointmentFile(String appointmentID, String comboSelection, String userID, LocalDate appointmentDate, String appointmentTime) throws IOException {
 
-        try (PrintWriter writer = new PrintWriter("src/UserAppointments/" + appointmentID + ".txt", "UTF-8")) {
-            writer.println(appointmentID);
-            writer.println(userID);
-            writer.println(comboSelection);
-            writer.println(appointmentDate);
-            writer.println(appointmentTime);
-            writer.println("");
-            writer.close();
-        }
+        FileWriter fw = new FileWriter("src/UserAppointments/" + userID + ".txt", true);
+
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+
+        pw.println(appointmentID + "," + comboSelection + "," + userID + "," + appointmentDate + "," + appointmentTime);
+        
+        pw.flush();
+        pw.close();
+
+        
 
     }
 
@@ -137,7 +141,6 @@ public class ReadWrite {
         } catch (Exception e) {
             return false;
         }
-
     }
 
 }

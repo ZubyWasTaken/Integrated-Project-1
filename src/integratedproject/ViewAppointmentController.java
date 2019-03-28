@@ -57,61 +57,13 @@ public class ViewAppointmentController implements Initializable {
     @FXML
     private Button btnCancel;
 
-    private static String[] ReturnAppointmentsFiles() throws FileNotFoundException {
-        File path = new File("src/UserAppointments");
-        Collection<String> files = new ArrayList<>();
 
-        if (path.isDirectory()) {
-            File[] listFiles = path.listFiles();
-
-            for (File file : listFiles) {
-                if (file.isFile()) {
-                    files.add(file.getName());
-                }
-            }
-        }
-
-        return files.toArray(new String[]{});
-
-    }
-
-    private static String removeTXT() throws FileNotFoundException {
-        String[] files = ReturnAppointmentsFiles();
-
-        String[] newFiles = new String[files.length];
-        String toDelete = ".txt";
-        for (int i = 0; i < newFiles.length; i++) {
-            newFiles[i] = files[i].replace(toDelete, "");
-        }
-
-        return Arrays.toString(newFiles);
-    }
-
-    private static List<String> returnFile(String[] files) {
-        String parentFolderPath = "src/UserAppointments/";
-        String fileName = "Hai61.txt";
-        File parent = new File(parentFolderPath);
-        for (File subFolder : parent.listFiles()) {
-            if (subFolder.isDirectory()) {
-                File f = new File(subFolder, fileName);
-                if (f.exists()) {
-                    System.out.println("Found");
-                }
-            }
-        }
-
-        return null;
-    }
 
     @FXML
     public void viewAppointment(ActionEvent event) throws IOException, ParseException {
         String userID = Patient.userID;
         System.out.println(Patient.userID);
-
-//        String[] files = ReturnAppointmentsFiles();
-        String files = removeTXT();
-        System.out.println(files);
-
+        
 //        if (ReadWrite.doesAppointmentExist(userID)
 //                == true) {
 //
