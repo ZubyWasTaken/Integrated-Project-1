@@ -16,8 +16,8 @@
                         <Font size="35.0" />
                     </font>
                 </Text>
-                <Button fx:id="loginButton" layoutX="303.0" layoutY="220.0" mnemonicParsing="false" onAction="#userLoginButtonAction" prefHeight="38.0" prefWidth="128.0" text="User Login" />
-                <Button layoutX="303.0" layoutY="300.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="128.0" text="Staff Login" />
+                <Button fx:id="loginButton" layoutX="303.0" layoutY="220.0" mnemonicParsing="false" onAction="#userLoginButton" prefHeight="38.0" prefWidth="128.0" text="User Login" />
+                <Button layoutX="303.0" layoutY="300.0" mnemonicParsing="false" onAction="#staffLoginButton" prefHeight="38.0" prefWidth="128.0" text="Staff Login" />
                 <Button fx:id="exitButton" layoutX="303.0" layoutY="380.0" mnemonicParsing="false" onAction="#exitButtonAction" prefHeight="38.0" prefWidth="128.0" text="Exit" />
             </children>
         </AnchorPane>
