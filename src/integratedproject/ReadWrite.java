@@ -94,6 +94,7 @@ public class ReadWrite {
             writer.println(userID);
             writer.println(comboSelection);
             writer.println(appointmentDate);
+            writer.println("");
             writer.close();
         }
 
@@ -104,7 +105,7 @@ public class ReadWrite {
 
         Scanner input = new Scanner(new File("src/UserAppointments/" + username + ".txt"));
         int counter = 0;
-        while (input.hasNextLine() && counter < 3) {
+        while (input.hasNextLine() && counter < 4) {
             appointment.add((input.nextLine()));
             counter++;
         }

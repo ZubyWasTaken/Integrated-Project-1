@@ -43,6 +43,9 @@ public class ViewAppointmentController implements Initializable {
 
     @FXML
     private Label lblDisplay;
+    
+    @FXML
+    private Label lblStatus;
 
     @FXML
     private Button btnCancel;
@@ -57,6 +60,13 @@ public class ViewAppointmentController implements Initializable {
             List<String> tempArray = ReadWrite.readAppointment(Patient.userID);
             String appointmentType = tempArray.get(1);       
             String date = tempArray.get(2);
+            String status = tempArray.get(3);
+            
+            if(status.isEmpty()){
+                lblStatus.setText("Appointment not done.");
+            }else{
+                lblStatus.setText(status);
+            }
             
             List<String> tempArray1 = ReadWrite.userForenameSurname(Patient.userID);
             

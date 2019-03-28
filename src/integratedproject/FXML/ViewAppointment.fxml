@@ -69,12 +69,22 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Button layoutX="304.0" layoutY="484.0" mnemonicParsing="false" onAction="#viewAppointment" prefHeight="38.0" prefWidth="128.0" text="View" />
-            <Label fx:id="lblDisplay" layoutX="344.0" layoutY="396.0">
+            <Label layoutX="37.0" layoutY="396.0" prefHeight="31.0" prefWidth="212.0" text="Status:">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
+            <Label fx:id="lblStatus" layoutX="264.0" layoutY="396.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDisplay" alignment="CENTER" layoutX="362.0" layoutY="438.0">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Button layoutX="304.0" layoutY="484.0" mnemonicParsing="false" onAction="#viewAppointment" prefHeight="38.0" prefWidth="128.0" text="View" />
             </children>
         </AnchorPane>
     </children>
