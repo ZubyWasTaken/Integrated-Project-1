@@ -87,7 +87,7 @@ public class ViewAppointmentController implements Initializable {
         return Arrays.toString(newFiles);
     }
 
-    private static void returnFile() {
+    private static List<String> returnFile(String[] files) {
         String parentFolderPath = "src/UserAppointments/";
         String fileName = "Hai61.txt";
         File parent = new File(parentFolderPath);
@@ -100,6 +100,7 @@ public class ViewAppointmentController implements Initializable {
             }
         }
 
+        return null;
     }
 
     @FXML
@@ -109,8 +110,8 @@ public class ViewAppointmentController implements Initializable {
 
 //        String[] files = ReturnAppointmentsFiles();
         String files = removeTXT();
-//        System.out.println(files);
-        returnFile();
+        System.out.println(files);
+
 //        if (ReadWrite.doesAppointmentExist(userID)
 //                == true) {
 //
