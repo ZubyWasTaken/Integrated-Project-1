@@ -7,6 +7,7 @@ import java.lang.reflect.Array;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -74,13 +75,26 @@ public class ViewAppointmentController implements Initializable {
 
     }
 
+    private static String removeTXT() throws FileNotFoundException {
+        String[] files = ReturnAppointmentsFiles();
+
+        String[] newFiles = new String[files.length];
+        String toDelete = ".txt";
+        for (int i = 0; i < newFiles.length; i++) {
+            newFiles[i] = files[i].replace(toDelete, "");
+        }
+        
+        return Arrays.toString(newFiles);
+    }
+
     @FXML
     public void viewAppointment(ActionEvent event) throws IOException, ParseException {
         String userID = Patient.userID;
         System.out.println(Patient.userID);
 
-        String[] files = ReturnAppointmentsFiles();
-        System.out.println(files[2]);
+//        String[] files = ReturnAppointmentsFiles();
+        String files = removeTXT();
+        System.out.println(files);
 
 //        if (ReadWrite.doesAppointmentExist(userID)
 //                == true) {
