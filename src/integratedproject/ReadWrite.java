@@ -13,7 +13,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -108,20 +107,6 @@ public class ReadWrite {
 
     }
 
-    public static List<String> readAppointment(String username) throws FileNotFoundException {
-        List<String> appointment = new ArrayList<>(5);
-
-        Scanner input = new Scanner(new File("src/UserAppointments/" + username + ".txt"));
-        int counter = 0;
-        while (input.hasNextLine() && counter < 4) {
-            appointment.add((input.nextLine()));
-            counter++;
-        }
-        input.close();
-        return appointment;
-
-    }
-
     public static boolean doesAppointmentExist(String username) {
         try {
             Scanner user = new Scanner(new File("src/UserAppointments/" + username + ".txt"));
@@ -133,24 +118,33 @@ public class ReadWrite {
 
     }
 
-    public static Boolean deleteAppointment(String username) throws IOException {
+    public static Boolean appointmentDelete(String listString) throws IOException {
+        File inputFile = new File("src/UserAppointments/" + Patient.userID + ".txt");
+        File tempFile = new File("src/UserAppointments/" + Patient.userID + "Temp.txt");
 
-        File file = new File("src/UserAppointments/" + username + ".txt");
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
 
-        try {
-            file.delete();
-            return true;
-        } catch (Exception e) {
-            return false;
+        String lineToRemove = listString;
+        String currentLine;
+
+        try{while ((currentLine = reader.readLine()) != null) {
+            // trim newline when comparing with lineToRemove
+            String trimmedLine = currentLine;
+            if (trimmedLine.equals(lineToRemove)) {
+                continue;
+            }
+            writer.write(currentLine + System.getProperty("line.separator"));
         }
-    }
-
-    public static Array[] getDetails(List<String> currentSelections) {
-        
-        
-        
-        return null;
-
+        }catch(IOException e){
+            inputFile.delete();
+        }
+        writer.close();
+        reader.close();
+        inputFile.delete();
+        tempFile.renameTo(inputFile);
+        System.out.println("done");
+        return true;
     }
 
     public static List<List<String>> returnAppointment() throws FileNotFoundException, IOException {

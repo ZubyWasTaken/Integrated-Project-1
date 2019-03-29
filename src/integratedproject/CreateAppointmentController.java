@@ -2,7 +2,6 @@ package integratedproject;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.util.Random;
 import java.util.ResourceBundle;

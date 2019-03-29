@@ -1,19 +1,9 @@
 package integratedproject;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,59 +57,56 @@ public class ViewAppointmentController implements Initializable {
 
     @FXML
     public void nextAppointment(ActionEvent event) throws IOException {
-        List<List<String>> appointments = ReadWrite.returnAppointment();
-        int maxCounter = appointments.size();
+        boolean found = ReadWrite.doesAppointmentExist(Patient.userID);
         try {
+            if (found) {
+                lblDisplay.setText("");
+                List<List<String>> appointments = ReadWrite.returnAppointment();
+                int maxCounter = appointments.size();
+                try {
+                    Patient.counter = -1;
+                    Patient.counter++;
+                    if (Patient.counter == maxCounter) {
+                        Patient.counter = 0;
+                    }
+                    List<String> currentSelection = ReadWrite.displayAppointment();
 
-            Patient.counter++;
-            if (Patient.counter == maxCounter) {
-                Patient.counter = 0;
-            }
-            List<String> currentSelection = ReadWrite.displayAppointment();
-            
-//            String[] currentAppointment = currentSelection.toArray(new String[currentSelection.size()]);
+                    String appointmentID = currentSelection.get(0);
+                    String appointmentType = currentSelection.get(1);
+                    String userID = currentSelection.get(2);
+                    String date = currentSelection.get(3);
+                    String timeAppointment = currentSelection.get(4);
+                    String status = currentSelection.get(5);
 
+                    if (status.contains(" ")) {
+                        lblStatus.setText("Appointment not done.");
+                    } else {
+                        lblStatus.setText(status);
+                    }
 
-//            String appointmentID = currentAppointment[0];
-//            String appointmentType = currentAppointment[1];
-//            String userID = currentAppointment[2];
-//            String date = currentAppointment[3];
-//            String timeAppointment = currentAppointment[4];
-//            String status = currentAppointment[5];
-            
-            String appointmentID = currentSelection.get(0);
-            String appointmentType = currentSelection.get(1);
-            String userID = currentSelection.get(2);
-            String date = currentSelection.get(3);
-            String timeAppointment = currentSelection.get(4);
-            String status = currentSelection.get(5);
+                    List<String> tempArray1 = ReadWrite.userForenameSurname(Patient.userID);
 
-            if (status.equals(" ")) {
-                lblStatus.setText("Appointment not done.");
+                    String forename = tempArray1.get(2);
+                    String surname = tempArray1.get(3);
+
+                    lblForename.setText(forename);
+                    lblSurname.setText(surname);
+
+                    lblUserID.setText(userID);
+                    lblAppointmentID.setText(appointmentID);
+                    lblAppointment.setText(appointmentType);
+                    lblTime.setText(timeAppointment);
+                    lblDate.setText(date);
+
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("error");
+                }
             } else {
-                lblStatus.setText(status);
+                lblDisplay.setText("No appointments exist for this user.");
             }
-
-            List<String> tempArray1 = ReadWrite.userForenameSurname(Patient.userID);
-
-            String forename = tempArray1.get(2);
-            String surname = tempArray1.get(3);
-
-            lblForename.setText(forename);
-            lblSurname.setText(surname);
-
-            lblUserID.setText(userID);
-            lblAppointmentID.setText(appointmentID);
-            lblAppointment.setText(appointmentType);
-            lblTime.setText(timeAppointment);
-            lblDate.setText(date);
-            
-
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("error");
-//            Patient.counter = 0;
+        } catch (IndexOutOfBoundsException e) {
+            lblDisplay.setText("No appointments exist for this user.");
         }
-
     }
 
     @FXML
@@ -137,38 +124,53 @@ public class ViewAppointmentController implements Initializable {
 
     @FXML
     public void cancelAppointment(ActionEvent event) throws IOException {
-        String userID = Patient.userID;
+        try{
+        List<String> currentSelection = ReadWrite.displayAppointment();
 
-        if (ReadWrite.doesAppointmentExist(userID) == true) {
+        String listString = String.join(",", currentSelection);
+        System.out.println(listString);
+
+
+        boolean found = ReadWrite.doesAppointmentExist(Patient.userID);
+
+        if (found) {
+            Patient.counter = 0;
             lblUserID.setText("");
             lblAppointment.setText("");
             lblForename.setText("");
             lblSurname.setText("");
             lblDate.setText("");
-
-            boolean deleted = ReadWrite.deleteAppointment(userID);
+            lblAppointmentID.setText("");
+            lblTime.setText("");
+            lblStatus.setText("");
+            boolean deleted = ReadWrite.appointmentDelete(listString);
             if (deleted) {
                 lblUserID.setText("");
                 lblAppointment.setText("");
                 lblForename.setText("");
                 lblSurname.setText("");
                 lblDate.setText("");
+                lblAppointmentID.setText("");
+                lblTime.setText("");
+                lblStatus.setText("");
 
                 lblDisplay.setText("Appointment successfully cancelled.");
                 btnCancel.setDisable(true);
             } else {
                 lblDisplay.setText("Appointment failed to cancel.");
             }
-
         } else {
             lblDisplay.setText("You have no appointment to cancel.");
         }
+
+        }catch(IndexOutOfBoundsException e){
+            lblDisplay.setText("You have no appointment to cancel.");
+        }
+        
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb
-    ) {
+    public void initialize(URL url, ResourceBundle rb) {
 
     }
-
 }

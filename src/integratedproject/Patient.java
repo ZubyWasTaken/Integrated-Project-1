@@ -14,5 +14,5 @@ public class Patient {
     public static String forename;
     public static String surname;
     public static String userID;
-    public static int counter = 1;
+    public static int counter = 0;
 }
