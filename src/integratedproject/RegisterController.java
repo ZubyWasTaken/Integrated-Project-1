@@ -92,19 +92,15 @@ public class RegisterController implements Initializable {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
-        String temp1 = forename.substring(0, 2);
-        String temp2 = surname.substring(0, 2);
-        String userID = temp1 + temp2 + randomNum;
-
         /*
          Checks if passwords are equal.
          */
         boolean match = passwrd.equals(confirmPasswrd);
         if (match == true) {
-            System.out.println("Your passwords match.");
+            passwordLabel.setText("Your passwords match.");
+            
 
         } else {
-            System.out.println("Your passwords do not match.");
             confirmPasswordLabel.setText("Your passwords do not match.");
         }
 
@@ -114,23 +110,18 @@ public class RegisterController implements Initializable {
          user to enter the data.
          */
         if (forename.length() == 0) {
-            System.out.println("Fill in forename");
             forenameLabel.setText("Please enter your forename.");
         }
         if (surname.length() == 0) {
-            System.out.println("Fill in surname");
             surnameLabel.setText("Please enter your surname.");
         }
         if (passwrd.length() == 0) {
-            System.out.println("Fill in password");
             passwordLabel.setText("Please enter your password.");
         }
         if (confirmPasswrd.length() == 0) {
-            System.out.println("Fill in password");
             confirmPasswordLabel.setText("Please confirm your password.");
         }
-        if (dateOfBirth == null) {
-            System.out.println("No valid date");
+        if (dateOfBirth == null) {    
             dateLabel.setText("Please confirm your Date of Birth.");
         }
 
@@ -175,7 +166,14 @@ public class RegisterController implements Initializable {
          if so then it clears the label that tells you to confirm your password.
          */
         if (confirmPasswrd.length() != 0 && (match == true)) {
-            confirmPasswordLabel.setText("");
+            confirmPasswordLabel.setText("Your passwords match.");
+        }
+
+        if (forename.length() > 0 && !forename.matches("[a-zA-Z ,]+")) {
+            forenameLabel.setText("Invalid charachter(s).");
+        }
+        if (surname.length() > 0 && !surname.matches("[a-zA-Z ,]+")) {
+            surnameLabel.setText("Invalid charachter(s).");
         }
 
         /*
@@ -184,16 +182,15 @@ public class RegisterController implements Initializable {
          remaining labels, and calls passes the variables into the method to
          write the data to an individual text file.
          */
-        if (forename.length() != 0 && surname.length() != 0 && dateOfBirth != null && passwrd.length() != 0 && confirmPasswrd.length() != 0 && dateOfBirth.compareTo(date) < 0) {
+        if (forename.length() != 0 && surname.length() != 0 && dateOfBirth != null && passwrd.length() != 0 && confirmPasswrd.length() != 0 && dateOfBirth.compareTo(date) < 0 && forename.matches("[a-zA-Z ,]+") && surname.matches("[a-zA-Z ,]+")) {
             if ((passwrd.length() > 7 && passwrd.length() < 19)) {
                 forenameLabel.setText("");
                 surnameLabel.setText("");
-                dateLabel.setText("");   
-                
-                Patient.userID = userID; 
-                Patient.forename = forename;
-                Patient.surname = surname;
-               
+                dateLabel.setText("");
+
+                String temp1 = forename.substring(0, 2);
+                String temp2 = surname.substring(0, 2);
+                String userID = temp1 + temp2 + randomNum;
 
                 // Calls writeToFile method in ReadWrite class.
                 ReadWrite.writeToFile(forename, surname, userID, passwrd, dateOfBirth);

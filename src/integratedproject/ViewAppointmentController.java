@@ -1,5 +1,6 @@
 package integratedproject;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -123,7 +124,7 @@ public class ViewAppointmentController implements Initializable {
     }
 
     @FXML
-    public void cancelAppointment(ActionEvent event) throws IOException {
+    public void cancelAppointment(ActionEvent event) throws IOException, FileNotFoundException {
         try{
         List<String> currentSelection = ReadWrite.displayAppointment();
 
@@ -164,6 +165,8 @@ public class ViewAppointmentController implements Initializable {
         }
 
         }catch(IndexOutOfBoundsException e){
+            lblDisplay.setText("You have no appointment to cancel.");
+        }catch(FileNotFoundException e){
             lblDisplay.setText("You have no appointment to cancel.");
         }
         

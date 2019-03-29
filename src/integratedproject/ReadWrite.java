@@ -82,14 +82,19 @@ public class ReadWrite {
      */
     public static void writeToFile(String forename, String surname, String userID, String password, LocalDate dateOfBirth) throws IOException {
 
-        try (PrintWriter writer = new PrintWriter("src/UserData/" + userID + ".txt", "UTF-8")) {
-            writer.println(userID);
-            writer.println(password);
-            writer.println(forename);
-            writer.println(surname);
-            writer.println(dateOfBirth);
-            writer.close();
-        }
+        FileWriter fw = new FileWriter("src/UserData/" + userID + ".txt", true);
+
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+
+        pw.println(userID);
+        pw.println(password);
+        pw.println(forename);
+        pw.println(surname);
+        pw.println(dateOfBirth);
+
+        pw.flush();
+        pw.close();
 
     }
 
@@ -128,15 +133,16 @@ public class ReadWrite {
         String lineToRemove = listString;
         String currentLine;
 
-        try{while ((currentLine = reader.readLine()) != null) {
-            // trim newline when comparing with lineToRemove
-            String trimmedLine = currentLine;
-            if (trimmedLine.equals(lineToRemove)) {
-                continue;
+        try {
+            while ((currentLine = reader.readLine()) != null) {
+                // trim newline when comparing with lineToRemove
+                String trimmedLine = currentLine;
+                if (trimmedLine.equals(lineToRemove)) {
+                    continue;
+                }
+                writer.write(currentLine + System.getProperty("line.separator"));
             }
-            writer.write(currentLine + System.getProperty("line.separator"));
-        }
-        }catch(IOException e){
+        } catch (IOException e) {
             inputFile.delete();
         }
         writer.close();
