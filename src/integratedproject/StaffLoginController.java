@@ -80,9 +80,13 @@ public class StaffLoginController implements Initializable {
             if (StaffReadWrite.doesUsernameExist(username) == true) {              
                 Patient.userID = username;
                 List<String> testArray = StaffReadWrite.readStaffData(username);
+                
+                
 
                 if (passwrd.equals(testArray.get(1))) {
-                    Parent root = FXMLLoader.load(getClass().getResource("FXML/Home.fxml"));
+                    Staff.staffID = testArray.get(0);
+                    Staff.speciality = testArray.get(2);
+                    Parent root = FXMLLoader.load(getClass().getResource("FXML/StaffHome.fxml"));
 
                     Scene scene = new Scene(root);
                     Stage reg = new Stage(StageStyle.DECORATED);

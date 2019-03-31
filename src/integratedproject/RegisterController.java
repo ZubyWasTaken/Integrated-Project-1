@@ -192,6 +192,8 @@ public class RegisterController implements Initializable {
                 String temp2 = surname.substring(0, 2);
                 String userID = temp1 + temp2 + randomNum;
 
+                ReadWrite.storeUsernames(userID);
+                
                 // Calls writeToFile method in ReadWrite class.
                 ReadWrite.writeToFile(forename, surname, userID, passwrd, dateOfBirth);
 

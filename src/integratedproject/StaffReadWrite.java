@@ -17,7 +17,7 @@ import java.util.Scanner;
  */
 public class StaffReadWrite {
 
-     public static boolean doesUsernameExist(String username) throws FileNotFoundException {
+    public static boolean doesUsernameExist(String username) throws FileNotFoundException {
         try {
             Scanner user = new Scanner(new File("src/StaffData/" + username + ".txt"));
             user.close();
@@ -26,19 +26,31 @@ public class StaffReadWrite {
             return false;
         }
     }
-     
-     public static List<String> readStaffData(String username) throws FileNotFoundException {
+
+    public static List<String> readStaffData(String username) throws FileNotFoundException {
         List<String> UserPass = new ArrayList<>();
 
         Scanner input = new Scanner(new File("src/StaffData/" + username + ".txt"));
         int counter = 0;
-        while (input.hasNextLine() && counter < 2) {
+        while (input.hasNextLine() && counter < 3) {
             UserPass.add((input.nextLine()));
             counter++;
         }
         input.close();
         return UserPass;
 
+    }
+
+    public static List<String> readUsernames() throws FileNotFoundException {
+        List<String> list = new ArrayList<>();
+
+        Scanner input = new Scanner(new File("src/UserData/AllUsernames.txt"));
+        while (input.hasNextLine()) {
+            list.add((input.nextLine()));
+        }
+        input.close();
+
+        return list;
     }
 
 }
