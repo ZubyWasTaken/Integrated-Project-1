@@ -5,11 +5,21 @@
  */
 package integratedproject;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 /**
  *
@@ -51,6 +61,33 @@ public class StaffReadWrite {
         input.close();
 
         return list;
+    }
+
+    public static List<List<String>> readAllFiles() throws FileNotFoundException, IOException {
+        File directory = new File("src/UserAppointments");
+        File files[] = directory.listFiles();
+        System.out.println();
+        int linenumber = 0;
+
+        for (File f : files) {
+
+            FileReader fr = new FileReader(f);
+            LineNumberReader lnr = new LineNumberReader(fr);
+            while (lnr.readLine() != null) {
+                linenumber++;
+            }
+            lnr.close();
+        }
+        List<List<String>> records = new ArrayList<>();
+        for (File file : files) {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                records.add(Arrays.asList(values));
+            }
+        }
+        return records;
     }
 
 }

@@ -97,22 +97,7 @@ public class ReadWrite {
         pw.close();
 
     }
-    
-    public static void storeUsernames(String userID) throws IOException{
-        
-        FileWriter fw  = new FileWriter("src/UserData/AllUsernames.txt", true);
-        
-        BufferedWriter bw = new BufferedWriter(fw);
-        PrintWriter pw = new PrintWriter(bw);
-        
-        pw.println(userID);
-        
-        
-        pw.flush();
-        pw.close();
-        
-    }
-
+   
     public static void createAppointmentFile(String appointmentID, String comboSelection, String userID, LocalDate appointmentDate, String appointmentTime) throws IOException {
 
         FileWriter fw = new FileWriter("src/UserAppointments/" + userID + ".txt", true);
@@ -179,34 +164,10 @@ public class ReadWrite {
         }
         return records;
     }
-    
-    public static List<List<String>> returnAppointmentStaff(String userID) throws FileNotFoundException, IOException {
-        List<List<String>> records = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src/UserAppointments/" + userID + ".txt"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");
-                records.add(Arrays.asList(values));
-            }
-        }
-        return records;
-    }
 
     public static List<String> displayAppointment() throws IOException {
         List<List<String>> records = returnAppointment();
         int counter = Patient.counter;
-
-        try {
-            return records.get(counter);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("testtest");
-        }
-        return null;
-    }
-    
-    public static List<String> displayAppointmentStaff(List<List<String>> records, int x) throws IOException {
-        
-        int counter = x;
 
         try {
             return records.get(counter);

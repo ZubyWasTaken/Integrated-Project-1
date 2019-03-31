@@ -1,8 +1,8 @@
 package integratedproject;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -59,40 +58,19 @@ public class StaffHomeController implements Initializable {
     ) {
 
         lblSpeciality.setText(Staff.speciality + " Appointments");
-
+        
         try {
-            List<String> list = StaffReadWrite.readUsernames();
-            int listSize = list.size();
+            List<List<String>> allAppointments = StaffReadWrite.readAllFiles();
+            System.out.println(allAppointments);
+            
 
-            String[] usernames = new String[listSize];
-
-            List<List<String>> appointments;
-
-            List<String> currentAppointment;
-
-            for (int i = 0; i < listSize; i++) {
-                usernames[i] = list.get(i);
-            }
-            for (int x = 0; x < listSize; x++) {
-                appointments = ReadWrite.returnAppointmentStaff(usernames[x]);
-                System.out.println(appointments);
-
-                for (int y = 0; y < listSize; y++) {
-                    currentAppointment = ReadWrite.displayAppointmentStaff(appointments, y);
-                    System.out.println(currentAppointment);
-                    if (Staff.speciality.equals(currentAppointment.get(1))) {
-                        String appointment = currentAppointment.toString();
-                        appointmentList.setText(appointment);
-                    }
-                }
-//                
-            }
-
-        } catch (FileNotFoundException e) {
-            System.out.println("Files not found.");
+            
+        } catch (FileNotFoundException ex) {
+            System.out.println("This error is here");
         } catch (IOException ex) {
-            System.out.println("File not found.");
+            System.out.println("This other error is here");
         }
+
 
     }
 
