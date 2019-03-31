@@ -65,7 +65,7 @@ public class ViewAppointmentController implements Initializable {
                 List<List<String>> appointments = ReadWrite.returnAppointment();
                 int maxCounter = appointments.size();
                 try {
-                    Patient.counter = -1;
+//                    Patient.counter = 0;
                     Patient.counter++;
                     if (Patient.counter == maxCounter) {
                         Patient.counter = 0;
