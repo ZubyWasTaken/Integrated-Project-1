@@ -1,4 +1,4 @@
-Spa01
+spa01
 testpass12
 Spa
 

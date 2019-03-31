@@ -62,8 +62,10 @@ public class StaffHomeController implements Initializable {
         try {
             List<List<String>> allAppointments = StaffReadWrite.readAllFiles();
             System.out.println(allAppointments);
+             int amountOfAppointments = allAppointments.size();
+             
+             System.out.println(amountOfAppointments);
             
-
             
         } catch (FileNotFoundException ex) {
             System.out.println("This error is here");

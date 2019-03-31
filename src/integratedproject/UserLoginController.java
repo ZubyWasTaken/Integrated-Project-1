@@ -39,8 +39,6 @@ public class UserLoginController implements Initializable {
     @FXML
     private Label passwordUserLabel;
 
-    Patient patient = new Patient();
-
     /*
      When the Home button in Register.fxml is clicked, it closes the window,
      and re-opens Home.fxml
