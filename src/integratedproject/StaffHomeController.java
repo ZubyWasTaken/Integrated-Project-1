@@ -18,7 +18,6 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-
 public class StaffHomeController implements Initializable {
 
     @FXML
@@ -26,6 +25,24 @@ public class StaffHomeController implements Initializable {
 
     @FXML
     private TextArea appointmentList;
+    
+    @FXML
+    private Label lblAppoimtmentID;
+    
+    @FXML
+    private Label lblAppointmentType;
+    
+    @FXML
+    private Label lblUserID;
+    
+    @FXML
+    private Label lblDate;
+    
+    @FXML
+    private Label lblTime;
+    
+    @FXML
+    private Label lblStatus;
 
     @FXML
     public void logoutButtonAction(ActionEvent event) throws IOException {
@@ -52,35 +69,34 @@ public class StaffHomeController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb
-    ) {
+    public void initialize(URL url, ResourceBundle rb) {
 
         lblSpeciality.setText(Staff.speciality + " Appointments");
 
         try {
             List<List<String>> allAppointments = StaffReadWrite.readAllFiles();
             int counter = 0;
-            List<String> singleApp = new ArrayList<>();
-            
+            Staff.singleApp = new ArrayList<>();
+
             for (int i = 0; i < allAppointments.size(); i++) {
                 List<String> tempArray = StaffReadWrite.singularAppointment(counter);
                 if (Staff.speciality.equals(tempArray.get(1))) {
-                    
+
                     String apps = String.join(",", tempArray);
-                    singleApp.add(apps);
+                    Staff.singleApp.add(apps);
                 }
 
                 counter++;
             }
             String newLine = System.getProperty("line.separator");
-            for(String f : singleApp){
+            for (String f : Staff.singleApp) {
                 appointmentList.appendText(f + newLine);
             }
 
         } catch (FileNotFoundException ex) {
-            System.out.println("This error is here");
+            lblSpeciality.setText("This error should not happen.");
         } catch (IOException ex) {
-            System.out.println("This other error is here");
+            System.out.println("This error should also not happen.");
         }
 
     }
