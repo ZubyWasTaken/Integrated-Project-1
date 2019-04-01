@@ -71,7 +71,7 @@ public class UpdateAppointmentController implements Initializable {
 
             boolean idMatch = false;
             String selectedID = "";
-            
+
             // loops through all appointment IDs and checks if the appointment ID
             // you typed in exists and sets selectedID to that ID
             int counter = 0;
@@ -83,7 +83,7 @@ public class UpdateAppointmentController implements Initializable {
                     selectedID = s;
                 }
             }
-            
+
             // checks if any appointments that are listed contain the appointment ID
             // that you entered. If so it assigns that entire appointment to the
             // string oldAppointment
@@ -110,6 +110,16 @@ public class UpdateAppointmentController implements Initializable {
             if (deleted) {
                 StaffReadWrite.createAppointmentFile(appID, appType, userID, Date, Time, Status);
                 System.out.println("Written.");
+
+                Parent root = FXMLLoader.load(getClass().getResource("FXML/StaffHome.fxml"));
+
+                Scene scene = new Scene(root);
+                Stage reg = new Stage(StageStyle.DECORATED);
+                reg.setTitle("Staff Home");
+                reg.setScene(scene);
+
+                reg.show();
+                ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
             } else {
                 System.out.println("Error");
             }
