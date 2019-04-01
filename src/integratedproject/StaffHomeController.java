@@ -100,7 +100,7 @@ public class StaffHomeController implements Initializable {
             }
 
         } catch (Exception e) {
-            lblSpeciality.setText("This error should not happen.");
+            appointmentList.setText("No appointments to show.");
         }
 
     }
@@ -136,39 +136,11 @@ public class StaffHomeController implements Initializable {
             }
 
         } catch (FileNotFoundException ex) {
-            lblSpeciality.setText("This error should not happen.");
+            appointmentList.setText("No appointments to show.");
         } catch (IOException ex) {
-            lblSpeciality.setText("This error should also not happen.");
+            appointmentList.setText("No appointments to show.");
         }
 
-        String[] appValues = Staff.singleApp.get(Staff.counter).split(",");
-
-        String appointmentID = appValues[0];
-        String appointmentType = appValues[1];
-        String userID = appValues[2];
-        String Date = appValues[3];
-        String Time = appValues[4];
-        String Status = appValues[5];
-
-        System.out.println(appointmentID);
-        System.out.println(appointmentType);
-        System.out.println(userID);
-        System.out.println(Date);
-        System.out.println(Time);
-        System.out.println(Status);
-
-        txtAppID.setText(appValues[0]);
-        txtAppType.setText(appointmentType);
-        txtUserID.setText(userID);
-        txtDate.setText(Date);
-        txtTime.setText(Time);
-//         
-        if (Status.contains(" ")) {
-            txtStatus.setText("In Progress");
-        } else {
-            txtStatus.setText(Status);
-        }
-//        
     }
 
 }
