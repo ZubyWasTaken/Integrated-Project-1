@@ -1,14 +1,11 @@
 package integratedproject;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,9 +14,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 
 public class StaffHomeController implements Initializable {
 
@@ -27,7 +25,7 @@ public class StaffHomeController implements Initializable {
     private Label lblSpeciality;
 
     @FXML
-    private TextField appointmentList;
+    private TextArea appointmentList;
 
     @FXML
     public void logoutButtonAction(ActionEvent event) throws IOException {
@@ -58,21 +56,32 @@ public class StaffHomeController implements Initializable {
     ) {
 
         lblSpeciality.setText(Staff.speciality + " Appointments");
-        
+
         try {
             List<List<String>> allAppointments = StaffReadWrite.readAllFiles();
-            System.out.println(allAppointments);
-             int amountOfAppointments = allAppointments.size();
-             
-             System.out.println(amountOfAppointments);
+            int counter = 0;
+            List<String> singleApp = new ArrayList<>();
             
-            
+            for (int i = 0; i < allAppointments.size(); i++) {
+                List<String> tempArray = StaffReadWrite.singularAppointment(counter);
+                if (Staff.speciality.equals(tempArray.get(1))) {
+                    
+                    String apps = String.join(",", tempArray);
+                    singleApp.add(apps);
+                }
+
+                counter++;
+            }
+            String newLine = System.getProperty("line.separator");
+            for(String f : singleApp){
+                appointmentList.appendText(f + newLine);
+            }
+
         } catch (FileNotFoundException ex) {
             System.out.println("This error is here");
         } catch (IOException ex) {
             System.out.println("This other error is here");
         }
-
 
     }
 
