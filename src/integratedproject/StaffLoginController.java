@@ -59,10 +59,9 @@ public class StaffLoginController implements Initializable {
 
     }
 
-  
     @FXML
     public void staffLogin(ActionEvent event) throws IOException {
-        
+
         String username = usernameStaff.getText();
         String passwrd = passwordStaff.getText();
 
@@ -77,11 +76,9 @@ public class StaffLoginController implements Initializable {
         }
 
         if (username.length() != 0) {
-            if (StaffReadWrite.doesUsernameExist(username) == true) {              
+            if (StaffReadWrite.doesUsernameExist(username) == true) {
                 Patient.userID = username;
                 List<String> testArray = StaffReadWrite.readStaffData(username);
-                
-                
 
                 if (passwrd.equals(testArray.get(1))) {
                     Staff.staffID = testArray.get(0);

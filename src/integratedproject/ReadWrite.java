@@ -97,7 +97,7 @@ public class ReadWrite {
         pw.close();
 
     }
-   
+
     public static void createAppointmentFile(String appointmentID, String comboSelection, String userID, LocalDate appointmentDate, String appointmentTime) throws IOException {
 
         FileWriter fw = new FileWriter("src/UserAppointments/" + userID + ".txt", true);
@@ -161,6 +161,7 @@ public class ReadWrite {
                 String[] values = line.split(",");
                 records.add(Arrays.asList(values));
             }
+            br.close();
         }
         return records;
     }

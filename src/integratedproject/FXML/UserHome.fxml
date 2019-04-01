@@ -16,8 +16,8 @@
                     </font>
                 </Text>
                 <Button fx:id="exitButton" layoutX="210.0" layoutY="275.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="38.0" prefWidth="61.0" text="Logout" />
-            <Button fx:id="exitButton1" layoutX="176.0" layoutY="111.0" mnemonicParsing="false" onAction="#createAppointment" prefHeight="38.0" prefWidth="128.0" text="Create Appointment" />
-            <Button fx:id="exitButton11" layoutX="176.0" layoutY="190.0" mnemonicParsing="false" onAction="#viewAppointment" prefHeight="38.0" prefWidth="128.0" text="View Appointment" />
+                <Button fx:id="exitButton1" layoutX="176.0" layoutY="111.0" mnemonicParsing="false" onAction="#createAppointment" prefHeight="38.0" prefWidth="128.0" text="Create Appointment" />
+                <Button fx:id="exitButton11" layoutX="176.0" layoutY="190.0" mnemonicParsing="false" onAction="#viewAppointment" prefHeight="38.0" prefWidth="128.0" text="View Appointment" />
             </children>
         </AnchorPane>
     </children>

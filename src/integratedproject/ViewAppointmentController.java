@@ -66,14 +66,12 @@ public class ViewAppointmentController implements Initializable {
 //                System.out.println(appointments);
                 int maxCounter = appointments.size();
                 try {
-                    System.out.println(Patient.counter);
                     Patient.counter++;
                     if (Patient.counter >= maxCounter) {
                         Patient.counter = 0;
                     }
-                    
+
                     List<String> currentSelection = appointments.get(Patient.counter);
-                    System.out.println(currentSelection);
                     String appointmentID = currentSelection.get(0);
                     String appointmentType = currentSelection.get(1);
                     String userID = currentSelection.get(2);
@@ -100,6 +98,18 @@ public class ViewAppointmentController implements Initializable {
                     lblAppointment.setText(appointmentType);
                     lblTime.setText(timeAppointment);
                     lblDate.setText(date);
+
+                    if (status.equals(" Pending")) {
+                        lblStatus.setText(status);
+                    } else if (status.equals(" In-progress")) {
+                        lblStatus.setText(status);
+                    } else if (status.equals(" Not-Complete")) {
+                        lblStatus.setText(status);
+                    } else if (status.equals(" Complete")) {
+                        lblStatus.setText(status);
+                    } else {
+                        lblStatus.setText("Not Started.");
+                    }
 
                 } catch (ArrayIndexOutOfBoundsException e) {
 

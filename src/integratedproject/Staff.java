@@ -12,9 +12,10 @@ import java.util.List;
  * @author Zuby
  */
 public class Staff {
+
     public static String staffID;
     public static String speciality;
     public static int counter = 0;
     public static List<String> singleApp;
-    
+
 }

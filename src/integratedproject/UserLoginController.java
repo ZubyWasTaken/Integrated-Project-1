@@ -100,7 +100,7 @@ public class UserLoginController implements Initializable {
          it prompts you that the username does not exist.
          */
         if (username.length() != 0) {
-            if (ReadWrite.doesUsernameExist(username) == true) {              
+            if (ReadWrite.doesUsernameExist(username) == true) {
                 Patient.userID = username;
                 List<String> testArray = ReadWrite.readTextFile(username);
 

@@ -1,4 +1,5 @@
 package integratedproject;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +22,7 @@ public class HomeController implements Initializable {
      Method to close the current window, with the mouseclick passed in as an
      argument .
      */
+
     private void closeWindow(ActionEvent event) {
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
@@ -44,7 +46,7 @@ public class HomeController implements Initializable {
         reg.setScene(scene);
         reg.show();
     }
-    
+
     private void loadStaffLogin() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/StaffLogin.fxml"));
         Scene scene = new Scene(root);
@@ -77,7 +79,7 @@ public class HomeController implements Initializable {
         closeWindow(event);
 
     }
-    
+
     /* Finds 'Exit' button andcalls closeWindow() method, and passes the
      event (mouseclick) into it.*/
     @FXML

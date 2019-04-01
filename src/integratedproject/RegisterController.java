@@ -98,7 +98,6 @@ public class RegisterController implements Initializable {
         boolean match = passwrd.equals(confirmPasswrd);
         if (match == true) {
             passwordLabel.setText("Your passwords match.");
-            
 
         } else {
             confirmPasswordLabel.setText("Your passwords do not match.");
@@ -121,7 +120,7 @@ public class RegisterController implements Initializable {
         if (confirmPasswrd.length() == 0) {
             confirmPasswordLabel.setText("Please confirm your password.");
         }
-        if (dateOfBirth == null) {    
+        if (dateOfBirth == null) {
             dateLabel.setText("Please confirm your Date of Birth.");
         }
 
@@ -191,7 +190,7 @@ public class RegisterController implements Initializable {
                 String temp1 = forename.substring(0, 2);
                 String temp2 = surname.substring(0, 2);
                 String userID = temp1 + temp2 + randomNum;
-                
+
                 // Calls writeToFile method in ReadWrite class.
                 ReadWrite.writeToFile(forename, surname, userID, passwrd, dateOfBirth);
 

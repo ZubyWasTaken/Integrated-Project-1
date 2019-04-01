@@ -132,7 +132,7 @@ public class CreateAppointmentController implements Initializable {
         } catch (Exception e) {
             lblAppointment.setText("Select time of appointment.");
         }
-        
+
         String appointmentTime = "";
         if (appointmentString.equals("Before Noon")) {
 
@@ -177,7 +177,6 @@ public class CreateAppointmentController implements Initializable {
             appointmentLabel.setText("");
         }
 
-        
         try {
             if (appointmentDate.compareTo(dateNow) < 0) {
                 appointmentLabel.setText("Appointment cannot be in the past.");
@@ -202,11 +201,6 @@ public class CreateAppointmentController implements Initializable {
             reg.show();
             ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
         }
-
-    }
-
-    @FXML
-    public void viewAppointment(ActionEvent event) throws IOException {
 
     }
 

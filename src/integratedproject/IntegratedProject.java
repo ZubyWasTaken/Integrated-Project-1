@@ -21,7 +21,7 @@ public class IntegratedProject extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/Home.fxml"));
 
-        Scene scene = new Scene(root);  
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

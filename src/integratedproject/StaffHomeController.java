@@ -93,12 +93,17 @@ public class StaffHomeController implements Initializable {
             txtDate.setText(Date);
             txtTime.setText(Time);
 
-            if (Status.contains(" ")) {
-                txtStatus.setText("Not Started.");
-            } else {
+            if (Status.equals(" Pending")) {
                 txtStatus.setText(Status);
+            } else if (Status.equals(" In-progress")) {
+                txtStatus.setText(Status);
+            } else if (Status.equals(" Not-Complete")) {
+                txtStatus.setText(Status);
+            } else if (Status.equals(" Complete")) {
+                txtStatus.setText(Status);
+            } else {
+                txtStatus.setText("Not Started.");
             }
-
         } catch (Exception e) {
             appointmentList.setText("No appointments to show.");
         }
@@ -107,11 +112,20 @@ public class StaffHomeController implements Initializable {
 
     @FXML
     public void updateAppointment(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/UpdateAppointment.fxml"));
 
+        Scene scene = new Scene(root);
+        Stage reg = new Stage(StageStyle.DECORATED);
+        reg.setTitle("Home");
+        reg.setScene(scene);
+
+        reg.show();
+        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb
+    ) {
 
         lblSpeciality.setText(Staff.speciality + " Appointments");
 
@@ -130,6 +144,7 @@ public class StaffHomeController implements Initializable {
 
                 counter++;
             }
+
             String newLine = System.getProperty("line.separator");
             for (String f : Staff.singleApp) {
                 appointmentList.appendText(f + newLine);

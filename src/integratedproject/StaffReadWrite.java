@@ -6,11 +6,14 @@
 package integratedproject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -81,11 +84,11 @@ public class StaffReadWrite {
                 String[] values = line.split(",");
                 records.add(Arrays.asList(values));
             }
+            br.close();
         }
         return records;
     }
 
-    
     public static List<String> singularAppointment(int counter) throws IOException {
         List<List<String>> records = readAllFiles();
 
@@ -96,4 +99,49 @@ public class StaffReadWrite {
         }
         return null;
     }
+
+    public static void createAppointmentFile(String appID, String appType, String userID, String Date, String Time, String Status) throws IOException {
+
+        FileWriter fw = new FileWriter("src/UserAppointments/" + userID + ".txt", true);
+
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter pw = new PrintWriter(bw);
+
+        pw.println(appID + "," + appType + "," + userID + "," + Date + "," + Time + "," + Status);
+
+        pw.flush();
+        pw.close();
+
+    }
+
+    public static Boolean appointmentDelete(String oldAppointment, String userID) throws IOException {
+        File inputFile = new File("src/UserAppointments/" + userID + ".txt");
+        File tempFile = new File("src/UserAppointments/" + userID + "Temp.txt");
+
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+        String lineToRemove = oldAppointment;
+        String currentLine;
+
+        try {
+            while ((currentLine = reader.readLine()) != null) {
+                // trim newline when comparing with lineToRemove
+                String trimmedLine = currentLine;
+                if (trimmedLine.equals(lineToRemove)) {
+                    continue;
+                }
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+        } catch (IOException e) {
+            inputFile.delete();
+        }
+        writer.close();
+        reader.close();
+        inputFile.delete();
+        tempFile.renameTo(inputFile);
+        System.out.println("done");
+        return true;
+    }
+
 }

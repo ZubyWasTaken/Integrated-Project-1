@@ -22,6 +22,7 @@ public class UserHomeController implements Initializable {
      When the Home button in Register.fxml is clicked, it closes the window,
      and re-opens Home.fxml
      */
+
     @FXML
     public void logoutButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/Home.fxml"));
