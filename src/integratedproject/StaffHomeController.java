@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -25,24 +26,24 @@ public class StaffHomeController implements Initializable {
 
     @FXML
     private TextArea appointmentList;
-    
+
     @FXML
-    private Label lblAppoimtmentID;
-    
+    private TextField txtAppID;
+
     @FXML
-    private Label lblAppointmentType;
-    
+    private TextField txtAppType;
+
     @FXML
-    private Label lblUserID;
-    
+    private TextField txtUserID;
+
     @FXML
-    private Label lblDate;
-    
+    private TextField txtDate;
+
     @FXML
-    private Label lblTime;
-    
+    private TextField txtTime;
+
     @FXML
-    private Label lblStatus;
+    private TextField txtStatus;
 
     @FXML
     public void logoutButtonAction(ActionEvent event) throws IOException {
@@ -55,6 +56,16 @@ public class StaffHomeController implements Initializable {
 
         reg.show();
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
+
+    }
+
+    @FXML
+    public void prevApp(ActionEvent event) throws IOException {
+
+    }
+
+    @FXML
+    public void nextApp(ActionEvent event) throws IOException {
 
     }
 
@@ -99,6 +110,34 @@ public class StaffHomeController implements Initializable {
             System.out.println("This error should also not happen.");
         }
 
+        String[] appValues = Staff.singleApp.get(Staff.counter).split(",");
+
+        String appointmentID = appValues[0];
+        String appointmentType = appValues[1];
+        String userID = appValues[2];
+        String Date = appValues[3];
+        String Time = appValues[4];
+        String Status = appValues[5];
+
+        System.out.println(appointmentID);
+        System.out.println(appointmentType);
+        System.out.println(userID);
+        System.out.println(Date);
+        System.out.println(Time);
+        System.out.println(Status);
+
+         txtAppID.setText(appValues[0]);
+         txtAppType.setText(appointmentType);
+         txtUserID.setText(userID);
+         txtDate.setText(Date);
+         txtTime.setText(Time);
+//         
+         if(Status.contains(" ")){
+             txtStatus.setText("In Progress");
+         }else{
+             txtStatus.setText(Status);
+         }
+//        
     }
 
 }

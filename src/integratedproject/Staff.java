@@ -14,7 +14,7 @@ import java.util.List;
 public class Staff {
     public static String staffID;
     public static String speciality;
-    public static int counter = 1;
+    public static int counter = 0;
     public static List<String> singleApp;
     
 }
