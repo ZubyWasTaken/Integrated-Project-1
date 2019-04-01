@@ -9,62 +9,60 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="444.0" prefWidth="1021.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="integratedproject.StaffHomeController">
+<VBox prefHeight="362.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="integratedproject.StaffHomeController">
     <children>
-        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="559.0" prefWidth="804.0" VBox.vgrow="ALWAYS">
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="358.0" prefWidth="1021.0" VBox.vgrow="ALWAYS">
             <children>
-                <Text layoutX="200.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Home">
+                <Text layoutX="174.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff Home">
                     <font>
                         <Font size="35.0" />
                     </font>
                 </Text>
-                <Button layoutX="743.0" layoutY="407.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="23.0" prefWidth="93.0" text="Logout" />
-            <Button layoutX="52.0" layoutY="388.0" mnemonicParsing="false" onAction="#updateAppointment" prefHeight="38.0" prefWidth="129.0" text="Update Appointment" />
-            <Button layoutX="362.0" layoutY="389.0" mnemonicParsing="false" onAction="#cancelAppointment" prefHeight="38.0" prefWidth="129.0" text="Cancel Appointment" />
-            <TextArea fx:id="appointmentList" editable="false" layoutX="508.0" layoutY="80.0" prefHeight="308.0" prefWidth="499.0" />
-            <Label fx:id="lblSpeciality" alignment="CENTER" layoutX="508.0" layoutY="38.0" prefHeight="30.0" prefWidth="499.0">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="99.0" prefHeight="30.0" prefWidth="170.0" text="Appointment ID:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="138.0" prefHeight="30.0" prefWidth="170.0" text="Appointment Type:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="178.0" prefHeight="30.0" prefWidth="170.0" text="User ID:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="223.0" prefHeight="30.0" prefWidth="170.0" text="Date:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="266.0" prefHeight="30.0" prefWidth="170.0" text="Time:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="306.0" prefHeight="30.0" prefWidth="170.0" text="Status:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Button layoutX="229.0" layoutY="395.0" mnemonicParsing="false" onAction="#prevApp" prefHeight="25.0" prefWidth="28.0" text="&lt;" />
-            <Button layoutX="297.0" layoutY="395.0" mnemonicParsing="false" onAction="#nextApp" prefHeight="25.0" prefWidth="28.0" text="&gt;" />
-            <TextField fx:id="txtAppID" editable="false" layoutX="223.0" layoutY="99.0" prefHeight="30.0" prefWidth="277.0" text="1" />
-            <TextField fx:id="txtAppType" editable="false" layoutX="223.0" layoutY="138.0" prefHeight="30.0" prefWidth="277.0" text="2" />
-            <TextField fx:id="txtUserID" editable="false" layoutX="223.0" layoutY="178.0" prefHeight="30.0" prefWidth="277.0" text="3" />
-            <TextField fx:id="txtDate" editable="false" layoutX="223.0" layoutY="223.0" prefHeight="30.0" prefWidth="277.0" text="4" />
-            <TextField fx:id="txtTime" editable="false" layoutX="224.0" layoutY="266.0" prefHeight="30.0" prefWidth="277.0" text="5" />
-            <TextField fx:id="txtStatus" editable="false" layoutX="223.0" layoutY="306.0" prefHeight="30.0" prefWidth="277.0" text="6" />
+                <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#logoutButtonAction" prefHeight="25.0" prefWidth="61.0" text="Logout" />
+                <Button layoutX="207.0" layoutY="309.0" mnemonicParsing="false" onAction="#updateAppointment" prefHeight="25.0" prefWidth="129.0" text="Update Appointment" />
+                <TextArea fx:id="appointmentList" editable="false" layoutX="482.0" layoutY="60.0" prefHeight="290.0" prefWidth="499.0" />
+                <Label fx:id="lblSpeciality" alignment="CENTER" layoutX="482.0" layoutY="24.0" prefHeight="30.0" prefWidth="499.0">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="61.0" prefHeight="30.0" prefWidth="170.0" text="Appointment ID:">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="100.0" prefHeight="30.0" prefWidth="170.0" text="Appointment Type:">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="140.0" prefHeight="30.0" prefWidth="170.0" text="User ID:">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="185.0" prefHeight="30.0" prefWidth="170.0" text="Date:">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="228.0" prefHeight="30.0" prefWidth="170.0" text="Time:">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER_RIGHT" layoutX="14.0" layoutY="268.0" prefHeight="30.0" prefWidth="170.0" text="Status:">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Button layoutX="347.0" layoutY="309.0" mnemonicParsing="false" onAction="#nextApp" prefHeight="25.0" prefWidth="129.0" text="Next Appointment" />
+                <TextField fx:id="txtAppID" editable="false" layoutX="197.0" layoutY="61.0" prefHeight="30.0" prefWidth="277.0" />
+                <TextField fx:id="txtAppType" editable="false" layoutX="197.0" layoutY="100.0" prefHeight="30.0" prefWidth="277.0" />
+                <TextField fx:id="txtUserID" editable="false" layoutX="197.0" layoutY="140.0" prefHeight="30.0" prefWidth="277.0" />
+                <TextField fx:id="txtDate" editable="false" layoutX="198.0" layoutY="185.0" prefHeight="30.0" prefWidth="277.0" />
+                <TextField fx:id="txtTime" editable="false" layoutX="198.0" layoutY="228.0" prefHeight="30.0" prefWidth="277.0" />
+                <TextField fx:id="txtStatus" editable="false" layoutX="197.0" layoutY="268.0" prefHeight="30.0" prefWidth="277.0" />
             </children>
         </AnchorPane>
     </children>

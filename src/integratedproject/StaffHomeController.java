@@ -60,22 +60,53 @@ public class StaffHomeController implements Initializable {
     }
 
     @FXML
-    public void prevApp(ActionEvent event) throws IOException {
-
-    }
-
-    @FXML
     public void nextApp(ActionEvent event) throws IOException {
+
+        try {
+
+            String[] appValues = Staff.singleApp.get(Staff.counter).split(",");
+
+            int maxSize = Staff.singleApp.size();
+            System.out.println(maxSize);
+            Staff.counter++;
+            if (Staff.counter == maxSize) {
+                Staff.counter = 0;
+            }
+
+            String appointmentID = appValues[0];
+            String appointmentType = appValues[1];
+            String userID = appValues[2];
+            String Date = appValues[3];
+            String Time = appValues[4];
+            String Status = appValues[5];
+
+            System.out.println(appointmentID);
+            System.out.println(appointmentType);
+            System.out.println(userID);
+            System.out.println(Date);
+            System.out.println(Time);
+            System.out.println(Status);
+
+            txtAppID.setText(appValues[0]);
+            txtAppType.setText(appointmentType);
+            txtUserID.setText(userID);
+            txtDate.setText(Date);
+            txtTime.setText(Time);
+
+            if (Status.contains(" ")) {
+                txtStatus.setText("In Progress");
+            } else {
+                txtStatus.setText(Status);
+            }
+
+        } catch (Exception e) {
+            lblSpeciality.setText("This error should not happen.");
+        }
 
     }
 
     @FXML
     public void updateAppointment(ActionEvent event) throws IOException {
-
-    }
-
-    @FXML
-    public void cancelAppointment(ActionEvent event) throws IOException {
 
     }
 
@@ -107,7 +138,7 @@ public class StaffHomeController implements Initializable {
         } catch (FileNotFoundException ex) {
             lblSpeciality.setText("This error should not happen.");
         } catch (IOException ex) {
-            System.out.println("This error should also not happen.");
+            lblSpeciality.setText("This error should also not happen.");
         }
 
         String[] appValues = Staff.singleApp.get(Staff.counter).split(",");
@@ -126,17 +157,17 @@ public class StaffHomeController implements Initializable {
         System.out.println(Time);
         System.out.println(Status);
 
-         txtAppID.setText(appValues[0]);
-         txtAppType.setText(appointmentType);
-         txtUserID.setText(userID);
-         txtDate.setText(Date);
-         txtTime.setText(Time);
+        txtAppID.setText(appValues[0]);
+        txtAppType.setText(appointmentType);
+        txtUserID.setText(userID);
+        txtDate.setText(Date);
+        txtTime.setText(Time);
 //         
-         if(Status.contains(" ")){
-             txtStatus.setText("In Progress");
-         }else{
-             txtStatus.setText(Status);
-         }
+        if (Status.contains(" ")) {
+            txtStatus.setText("In Progress");
+        } else {
+            txtStatus.setText(Status);
+        }
 //        
     }
 
