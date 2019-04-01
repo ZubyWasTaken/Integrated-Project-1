@@ -94,7 +94,7 @@ public class StaffHomeController implements Initializable {
             txtTime.setText(Time);
 
             if (Status.contains(" ")) {
-                txtStatus.setText("In Progress");
+                txtStatus.setText("Not Started.");
             } else {
                 txtStatus.setText(Status);
             }
