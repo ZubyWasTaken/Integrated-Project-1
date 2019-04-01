@@ -25,10 +25,8 @@ import javafx.stage.StageStyle;
  */
 public class CreateAppointmentController implements Initializable {
 
-    /*
-     These variables below link the FXML labels and text fields
-     with the code, allowing the code to manipulate them.
-     */
+    // Variables declared to be used by the code - these are linked to the
+    // according element in the FXML
     @FXML
     private TextField userUserID;
 
@@ -53,6 +51,7 @@ public class CreateAppointmentController implements Initializable {
     @FXML
     private Label comboLabel;
 
+    //Opens User Home and closes current window
     @FXML
     public void exitButton(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
@@ -66,6 +65,7 @@ public class CreateAppointmentController implements Initializable {
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
+    // Method to make a random time between 9am and 11:59am
     private String TimeBeforeNoon() {
         Random rand = new Random();
         String appointment;
@@ -85,6 +85,7 @@ public class CreateAppointmentController implements Initializable {
         return appointment = (randomHour + ":" + randomMin + "am");
     }
 
+    // Method to make a random time between 1pm and 4:50pm
     private String TimeAfterNoon() {
         Random rand = new Random();
         String appointment;
@@ -111,6 +112,8 @@ public class CreateAppointmentController implements Initializable {
 
         String comboSelection = "";
         String appointmentID = "";
+
+        // Get user's selection of appointment and create a unique appointment ID
         try {
             comboSelection = comboBox.getSelectionModel().getSelectedItem().toString();
 
@@ -127,17 +130,21 @@ public class CreateAppointmentController implements Initializable {
         }
 
         String appointmentString = "";
+
+        //Get user's preferred time
         try {
             appointmentString = timeAppointment.getSelectionModel().getSelectedItem().toString();
         } catch (Exception e) {
             lblAppointment.setText("Select time of appointment.");
         }
 
+        // If selection is before noon then call that function
         String appointmentTime = "";
         if (appointmentString.equals("Before Noon")) {
 
             appointmentTime = TimeBeforeNoon();
 
+            // If selection is after noon then call that function
         } else if (appointmentString.equals("After Noon")) {
 
             appointmentTime = TimeAfterNoon();
@@ -150,6 +157,7 @@ public class CreateAppointmentController implements Initializable {
             lblAppointment.setText("");
         }
 
+        //Validation
         String userID = userUserID.getText();
         LocalDate appointmentDate = dateAppointment.getValue();
         LocalDate dateNow = LocalDate.now();
@@ -188,6 +196,7 @@ public class CreateAppointmentController implements Initializable {
             appointmentLabel.setText("");
         }
 
+        // Creates appointment and opens User Home
         if (appointmentDate != null && userID.length() > 0 && appointmentDate.compareTo(dateNow) > 0 && Patient.userID.equals(userID) && !appointmentTime.isEmpty() && !appointmentTime.equals("-1")) {
 
             ReadWrite.createAppointmentFile(appointmentID, comboSelection, userID, appointmentDate, appointmentTime);
@@ -195,7 +204,7 @@ public class CreateAppointmentController implements Initializable {
 
             Scene scene = new Scene(root);
             Stage reg = new Stage(StageStyle.DECORATED);
-            reg.setTitle("Home");
+            reg.setTitle("User Home");
             reg.setScene(scene);
 
             reg.show();

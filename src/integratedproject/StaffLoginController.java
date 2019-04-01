@@ -23,10 +23,8 @@ import javafx.stage.StageStyle;
  */
 public class StaffLoginController implements Initializable {
 
-    /*
-     These variables below link the FXML labels and text fields
-     with the code, allowing the code to manipulate them.
-     */
+    // Variables declared to be used by the code - these are linked to the
+    // according element in the FXML
     @FXML
     private TextField usernameStaff;
 
@@ -41,10 +39,7 @@ public class StaffLoginController implements Initializable {
 
     Patient patient = new Patient();
 
-    /*
-     When the Home button in Register.fxml is clicked, it closes the window,
-     and re-opens Home.fxml
-     */
+    // Opens home screen
     @FXML
     public void homeButton(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/Home.fxml"));
@@ -59,15 +54,18 @@ public class StaffLoginController implements Initializable {
 
     }
 
+    // Login button
     @FXML
     public void staffLogin(ActionEvent event) throws IOException {
 
+        // gets data from text field and sets to variable
         String username = usernameStaff.getText();
         String passwrd = passwordStaff.getText();
 
         lblUsername.setText("");
         lblPassword.setText("");
 
+        //validation
         if (username.length() == 0) {
             lblUsername.setText("Please enter a username.");
         }
@@ -75,6 +73,9 @@ public class StaffLoginController implements Initializable {
             lblPassword.setText("Please enter a password.");
         }
 
+        // checks if username variable isnt empty, checks if it exists,
+        // and matches username against password. If all is well it opens
+        // staff home
         if (username.length() != 0) {
             if (StaffReadWrite.doesUsernameExist(username) == true) {
                 Patient.userID = username;

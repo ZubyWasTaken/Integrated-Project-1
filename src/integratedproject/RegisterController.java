@@ -25,10 +25,8 @@ import javafx.stage.StageStyle;
  */
 public class RegisterController implements Initializable {
 
-    /*
-     These variables below link the FXML labels and text fields
-     with the code, allowing the code to manipulate them.
-     */
+    // Variables declared to be used by the code - these are linked to the
+    // according element in the FXML
     @FXML
     private Label userIDLabel;
 
@@ -65,17 +63,11 @@ public class RegisterController implements Initializable {
     @FXML
     private Button registerButton;
 
-    /*
-     This code is executed when the 'Register' button is clicked in
-     Register.fxml
-     */
+    // Registers the user
     @FXML
     private void registerButtonAction(ActionEvent event) throws IOException {
 
-        /*
-         Setting the data in the textfields and date picker to variables
-         to be used by the code.
-         */
+        // Data gotten from the textfields and stored into variables
         String forename = forename1.getText();
         String surname = surname2.getText();
         String passwrd = password.getText();
@@ -83,18 +75,13 @@ public class RegisterController implements Initializable {
         LocalDate dateOfBirth = DoB.getValue();
         LocalDate date = LocalDate.now();
 
-        /*
-         This is to affix a random number to the user's forename and surname
-         to create a unique userID.
-         */
+        // Create a random number between 1 and 1000
         int max = 1000;
         int min = 1;
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
 
-        /*
-         Checks if passwords are equal.
-         */
+        // Checks if passwords match
         boolean match = passwrd.equals(confirmPasswrd);
         if (match == true) {
             passwordLabel.setText("Your passwords match.");
@@ -103,11 +90,7 @@ public class RegisterController implements Initializable {
             confirmPasswordLabel.setText("Your passwords do not match.");
         }
 
-        /*
-         This section checks if the textfields and datepicker are empty
-         and if they are empty to change the text in the labels to prompt the
-         user to enter the data.
-         */
+        // Input validation
         if (forename.length() == 0) {
             forenameLabel.setText("Please enter your forename.");
         }
@@ -124,19 +107,12 @@ public class RegisterController implements Initializable {
             dateLabel.setText("Please confirm your Date of Birth.");
         }
 
-        /*
-         If the password entered is not between 8 and 18 chars it prompts
-         the user that their password must be between those two limits.
-         */
         if ((passwrd.length() < 8 || passwrd.length() > 18)) {
 
             passwordLabel.setText("Password must be 8 to 18 characters.");
         }
 
-        /*
-         If the forename and username fields and datepicker are not empty then it clears the
-         labels.
-         */
+
         if (forename.length() != 0) {
             forenameLabel.setText("");
 
@@ -151,19 +127,10 @@ public class RegisterController implements Initializable {
                 dateLabel.setText("Date of birth cannot be in the future.");
             }
         }
-
-        /*
-         If the password is between the limit then it clears the label telling
-         you that your password is not within limit.
-         */
         if ((passwrd.length() > 7 && passwrd.length() < 19)) {
             passwordLabel.setText("");
         }
 
-        /*
-         Checks if your password matches, and if the field has any data in it,
-         if so then it clears the label that tells you to confirm your password.
-         */
         if (confirmPasswrd.length() != 0 && (match == true)) {
             confirmPasswordLabel.setText("Your passwords match.");
         }
@@ -175,12 +142,7 @@ public class RegisterController implements Initializable {
             surnameLabel.setText("Invalid charachter(s).");
         }
 
-        /*
-         If the forename, surname, datepicker, and both password fields are NOT
-         empty, AND if the password lengths are within limit, THEN it clears the
-         remaining labels, and calls passes the variables into the method to
-         write the data to an individual text file.
-         */
+        // If validation is all correct, registers user and disables register button
         if (forename.length() != 0 && surname.length() != 0 && dateOfBirth != null && passwrd.length() != 0 && confirmPasswrd.length() != 0 && dateOfBirth.compareTo(date) < 0 && forename.matches("[a-zA-Z ,]+") && surname.matches("[a-zA-Z ,]+")) {
             if ((passwrd.length() > 7 && passwrd.length() < 19)) {
                 forenameLabel.setText("");

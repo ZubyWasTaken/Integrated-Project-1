@@ -23,10 +23,8 @@ import javafx.stage.StageStyle;
  */
 public class UserLoginController implements Initializable {
 
-    /*
-     These variables below link the FXML labels and text fields
-     with the code, allowing the code to manipulate them.
-     */
+    // Variables declared to be used by the code - these are linked to the
+    // according element in the FXML
     @FXML
     private TextField usernameUser;
 
@@ -39,10 +37,7 @@ public class UserLoginController implements Initializable {
     @FXML
     private Label passwordUserLabel;
 
-    /*
-     When the Home button in Register.fxml is clicked, it closes the window,
-     and re-opens Home.fxml
-     */
+    // closes current window and opens home window
     @FXML
     public void homeButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/Home.fxml"));
@@ -57,26 +52,17 @@ public class UserLoginController implements Initializable {
 
     }
 
-    /*
-     This code is executed when the 'Register' button is clicked in
-     Register.fxml
-     */
+    // user login button
     @FXML
     public void userLogin(ActionEvent event) throws IOException {
-        /*
-         Setting the data in the textfields and date picker to variables
-         to be used by the code.
-         */
+        // assigns the variables gotten from the textfields
         String username = usernameUser.getText();
         String passwrd = passwordUser.getText();
 
         usernameUserLabel.setText("");
         passwordUserLabel.setText("");
 
-        /*
-         Checks if the username and password fields are empty, and if so it
-         tells you to enter a username and/or a password.
-         */
+        // validation
         if (username.length() == 0) {
             usernameUserLabel.setText("Please enter a username.");
         }
@@ -84,21 +70,9 @@ public class UserLoginController implements Initializable {
             passwordUserLabel.setText("Please enter a password.");
         }
 
-        /*
-         If the username field is not empty, it calls the doesUsernameExist
-         in ReadWrite class to see if the username exists, if it does
-         it calls readTextFile in the same class and passes in the userID to
-         return the userID and password in an array.
-        
-         If the username does exist then it matches the variable passwrd, which
-         is the user's inputted password, against the 2nd position in the array
-         that got passed back with that specific userID's password and checks
-         if they match. If it matches it goes to UserMenu.fxml, if not it tells
-         you that the Username/Password is incorrect.
-        
-         If the username is not found
-         it prompts you that the username does not exist.
-         */
+        // checks if username exists, and matches the password entered with
+        // the password of that username. if all is good it logs you in by opening
+        // user home window
         if (username.length() != 0) {
             if (ReadWrite.doesUsernameExist(username) == true) {
                 Patient.userID = username;

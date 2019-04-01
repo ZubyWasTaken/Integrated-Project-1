@@ -22,10 +22,8 @@ import javafx.stage.StageStyle;
  */
 public class ViewAppointmentController implements Initializable {
 
-    /*
-     These variables below link the FXML labels and text fields
-     with the code, allowing the code to manipulate them.
-     */
+    // Variables declared to be used by the code - these are linked to the
+    // according element in the FXML
     @FXML
     private Label lblUserID;
 
@@ -56,6 +54,7 @@ public class ViewAppointmentController implements Initializable {
     @FXML
     private Button btnCancel;
 
+    // Cycles through appointments
     @FXML
     public void nextAppointment(ActionEvent event) throws IOException {
         boolean found = ReadWrite.doesAppointmentExist(Patient.userID);
@@ -63,14 +62,16 @@ public class ViewAppointmentController implements Initializable {
             if (found) {
                 lblDisplay.setText("");
                 List<List<String>> appointments = ReadWrite.returnAppointment();
-//                System.out.println(appointments);
+
+                // used to cycle through appointments
                 int maxCounter = appointments.size();
                 try {
                     Patient.counter++;
                     if (Patient.counter >= maxCounter) {
                         Patient.counter = 0;
                     }
-
+                    
+                    // assigns variables from the data in the current appointment list
                     List<String> currentSelection = appointments.get(Patient.counter);
                     String appointmentID = currentSelection.get(0);
                     String appointmentType = currentSelection.get(1);
@@ -78,18 +79,14 @@ public class ViewAppointmentController implements Initializable {
                     String date = currentSelection.get(3);
                     String timeAppointment = currentSelection.get(4);
                     String status = currentSelection.get(5);
-
-                    if (status.contains(" ")) {
-                        lblStatus.setText("Not started.");
-                    } else {
-                        lblStatus.setText(status);
-                    }
-
+                    
+                    // gets users forename and surname
                     List<String> tempArray1 = ReadWrite.userForenameSurname(Patient.userID);
 
                     String forename = tempArray1.get(2);
                     String surname = tempArray1.get(3);
 
+                    // displays the data onto the labels
                     lblForename.setText(forename);
                     lblSurname.setText(surname);
 
@@ -99,6 +96,7 @@ public class ViewAppointmentController implements Initializable {
                     lblTime.setText(timeAppointment);
                     lblDate.setText(date);
 
+                    // validation
                     if (status.equals(" Pending")) {
                         lblStatus.setText(status);
                     } else if (status.equals(" In-progress")) {
@@ -122,29 +120,35 @@ public class ViewAppointmentController implements Initializable {
         }
     }
 
+    // closes current window and goes to user home window
     @FXML
     public void exitButton(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/UserHome.fxml"));
 
         Scene scene = new Scene(root);
         Stage reg = new Stage(StageStyle.DECORATED);
-        reg.setTitle("Home");
+        reg.setTitle("User Home");
         reg.setScene(scene);
 
         reg.show();
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
+    // cancel appointment button
     @FXML
     public void cancelAppointment(ActionEvent event) throws IOException, FileNotFoundException {
         try {
+            // currentSelection is the appointment that is currently displayed
             List<String> currentSelection = ReadWrite.displayAppointment();
 
+            // makes that list to a string
             String listString = String.join(",", currentSelection);
             System.out.println(listString);
 
+            // string is passed in to check if appoiintment infact exists
             boolean found = ReadWrite.doesAppointmentExist(Patient.userID);
 
+            // if it exists it clears labels
             if (found) {
                 Patient.counter = 0;
                 lblUserID.setText("");
@@ -155,8 +159,11 @@ public class ViewAppointmentController implements Initializable {
                 lblAppointmentID.setText("");
                 lblTime.setText("");
                 lblStatus.setText("");
+                
+                //string is passed to method to delete it from users appointment files
                 boolean deleted = ReadWrite.appointmentDelete(listString);
                 if (deleted) {
+                    //once deleted it clears labels again
                     lblUserID.setText("");
                     lblAppointment.setText("");
                     lblForename.setText("");
@@ -166,6 +173,7 @@ public class ViewAppointmentController implements Initializable {
                     lblTime.setText("");
                     lblStatus.setText("");
 
+                    // success message, disables cancel button
                     lblDisplay.setText("Appointment successfully cancelled.");
                     btnCancel.setDisable(true);
                 } else {

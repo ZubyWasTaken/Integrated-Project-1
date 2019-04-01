@@ -25,6 +25,9 @@ import java.util.Scanner;
  */
 public class StaffReadWrite {
 
+    // Checks if username exists by trying to open the file
+    // if it opens returns true
+    // if it can't open it will error, and return false
     public static boolean doesUsernameExist(String username) throws FileNotFoundException {
         try {
             Scanner user = new Scanner(new File("src/StaffData/" + username + ".txt"));
@@ -35,6 +38,7 @@ public class StaffReadWrite {
         }
     }
 
+    // Reads the staff data and returns their username, password, and speciality
     public static List<String> readStaffData(String username) throws FileNotFoundException {
         List<String> UserPass = new ArrayList<>();
 
@@ -49,18 +53,8 @@ public class StaffReadWrite {
 
     }
 
-    public static List<String> readUsernames() throws FileNotFoundException {
-        List<String> list = new ArrayList<>();
-
-        Scanner input = new Scanner(new File("src/UserData/AllUsernames.txt"));
-        while (input.hasNextLine()) {
-            list.add((input.nextLine()));
-        }
-        input.close();
-
-        return list;
-    }
-
+    // Reads in all appointments and adds it to a list inside a list
+    // and returns that.
     public static List<List<String>> readAllFiles() throws FileNotFoundException, IOException {
         File directory = new File("src/UserAppointments");
         File files[] = directory.listFiles();
@@ -89,6 +83,8 @@ public class StaffReadWrite {
         return records;
     }
 
+    // returns a single list of appointments from the big list of lists
+    // returns the position you want via counter variable
     public static List<String> singularAppointment(int counter) throws IOException {
         List<List<String>> records = readAllFiles();
 
@@ -100,6 +96,8 @@ public class StaffReadWrite {
         return null;
     }
 
+    // creates a new appointment inside existing user's appointmnets
+    // this method adds the status.
     public static void createAppointmentFile(String appID, String appType, String userID, String Date, String Time, String Status) throws IOException {
 
         FileWriter fw = new FileWriter("src/UserAppointments/" + userID + ".txt", true);
@@ -114,6 +112,9 @@ public class StaffReadWrite {
 
     }
 
+    // deletes the line you want (oldAppointment) and does this by finding the
+    // old users appointments file. Opens original and creates a new copy called 
+    // userIDTemp, once done it deletes original and renames new copy to original
     public static Boolean appointmentDelete(String oldAppointment, String userID) throws IOException {
         File inputFile = new File("src/UserAppointments/" + userID + ".txt");
         File tempFile = new File("src/UserAppointments/" + userID + "Temp.txt");

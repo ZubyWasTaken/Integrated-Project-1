@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package integratedproject;
 
 import java.io.BufferedReader;
@@ -25,13 +20,9 @@ import java.util.Scanner;
  */
 public class ReadWrite {
 
-    /*
-     This method checks if the username exists. How it does this is by checking
-     if the UserData directory contains a text file with the userID that has been
-     passed into the method. If it doesn't exist, the try/catch block catches the
-     error and instead of throwing an error, it returns false. If it has been
-     found then it returns true.
-     */
+    // Checks if username exists by trying to open file with the users ID
+    // if it can open file it returns true
+    // if it cannot open file, it errors and returns false
     public static boolean doesUsernameExist(String username) throws FileNotFoundException {
         try {
             Scanner user = new Scanner(new File("src/UserData/" + username + ".txt"));
@@ -42,12 +33,9 @@ public class ReadWrite {
         }
     }
 
-    /*
-     This method gets the username passed in, and scans the UserData directory
-     to find a matching username in that directory, and if it has been found
-     it returns the first two items in the text file and appends it to a
-     List<String> and returns that.
-     */
+    // Reads text file that is the same as the users ID
+    // reads in the first two lines and returns them
+    // first two lines are username and password
     public static List<String> readTextFile(String username) throws FileNotFoundException {
         List<String> UserPass = new ArrayList<>();
 
@@ -62,6 +50,8 @@ public class ReadWrite {
 
     }
 
+    // Opens the users data file and reads first four lines
+    // same as method above, but is used to get the forename and surname of user
     public static List<String> userForenameSurname(String userID) throws FileNotFoundException {
         List<String> UserPass = new ArrayList<>();
 
@@ -76,10 +66,8 @@ public class ReadWrite {
 
     }
 
-    /*
-     This methoid below writes all the user data to a text file, with the userID
-     as the file name.
-     */
+    // Writes the following variables each to a new line
+    // file name is same as user ID
     public static void writeToFile(String forename, String surname, String userID, String password, LocalDate dateOfBirth) throws IOException {
 
         FileWriter fw = new FileWriter("src/UserData/" + userID + ".txt", true);
@@ -98,6 +86,8 @@ public class ReadWrite {
 
     }
 
+    // Writes the following variables all to the same line to make an appointment
+    // file name is same as user ID
     public static void createAppointmentFile(String appointmentID, String comboSelection, String userID, LocalDate appointmentDate, String appointmentTime) throws IOException {
 
         FileWriter fw = new FileWriter("src/UserAppointments/" + userID + ".txt", true);
@@ -112,6 +102,9 @@ public class ReadWrite {
 
     }
 
+    // Checks if appointment exists by trying to open file with the users ID
+    // if it can open file it returns true
+    // if it cannot open file, it errors and returns false
     public static boolean doesAppointmentExist(String username) {
         try {
             Scanner user = new Scanner(new File("src/UserAppointments/" + username + ".txt"));
@@ -123,6 +116,10 @@ public class ReadWrite {
 
     }
 
+    // deletes the appointment by copying the original file and renaming it
+    // to originalnameTemp and then once done with the new file it deletes
+    // the old fire and renames the new file to the original files name
+    // original files name is the same as the user's ID
     public static Boolean appointmentDelete(String listString) throws IOException {
         File inputFile = new File("src/UserAppointments/" + Patient.userID + ".txt");
         File tempFile = new File("src/UserAppointments/" + Patient.userID + "Temp.txt");
@@ -153,6 +150,8 @@ public class ReadWrite {
         return true;
     }
 
+    // Returns a list containing a list of all of the appointments that the
+    // user has
     public static List<List<String>> returnAppointment() throws FileNotFoundException, IOException {
         List<List<String>> records = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("src/UserAppointments/" + Patient.userID + ".txt"))) {
@@ -166,6 +165,21 @@ public class ReadWrite {
         return records;
     }
 
+    // Looks into the array, and the counter variable is used to return
+    // the appointment in that position of the list.
+    /*
+    Strucure:
+    EntireList{
+        Appointment1{
+            data
+        }
+        Appointment2{
+            data
+        }
+        .. etc
+    }
+    
+    */
     public static List<String> displayAppointment() throws IOException {
         List<List<String>> records = returnAppointment();
         int counter = Patient.counter;

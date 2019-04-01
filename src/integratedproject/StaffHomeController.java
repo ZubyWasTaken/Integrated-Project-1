@@ -21,6 +21,8 @@ import javafx.stage.StageStyle;
 
 public class StaffHomeController implements Initializable {
 
+    // Variables declared to be used by the code - these are linked to the
+    // according element in the FXML
     @FXML
     private Label lblSpeciality;
 
@@ -45,6 +47,7 @@ public class StaffHomeController implements Initializable {
     @FXML
     private TextField txtStatus;
 
+    // Closes current window and opens home screen
     @FXML
     public void logoutButtonAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/Home.fxml"));
@@ -59,13 +62,16 @@ public class StaffHomeController implements Initializable {
 
     }
 
+    // Cycles to next appointment
     @FXML
     public void nextApp(ActionEvent event) throws IOException {
 
         try {
-
+            
+            // Removes the selected appointment from the list of all appointments
             String[] appValues = Staff.singleApp.get(Staff.counter).split(",");
 
+            // used to cycle through all appointments
             int maxSize = Staff.singleApp.size();
             System.out.println(maxSize);
             Staff.counter++;
@@ -73,6 +79,7 @@ public class StaffHomeController implements Initializable {
                 Staff.counter = 0;
             }
 
+            // Gets the data from the current appointment and displays
             String appointmentID = appValues[0];
             String appointmentType = appValues[1];
             String userID = appValues[2];
@@ -80,19 +87,13 @@ public class StaffHomeController implements Initializable {
             String Time = appValues[4];
             String Status = appValues[5];
 
-            System.out.println(appointmentID);
-            System.out.println(appointmentType);
-            System.out.println(userID);
-            System.out.println(Date);
-            System.out.println(Time);
-            System.out.println(Status);
-
-            txtAppID.setText(appValues[0]);
+            txtAppID.setText(appointmentID);
             txtAppType.setText(appointmentType);
             txtUserID.setText(userID);
             txtDate.setText(Date);
             txtTime.setText(Time);
 
+            // validation
             if (Status.equals(" Pending")) {
                 txtStatus.setText(Status);
             } else if (Status.equals(" In-progress")) {
@@ -110,13 +111,14 @@ public class StaffHomeController implements Initializable {
 
     }
 
+    // Opens update appointment screen
     @FXML
     public void updateAppointment(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/UpdateAppointment.fxml"));
 
         Scene scene = new Scene(root);
         Stage reg = new Stage(StageStyle.DECORATED);
-        reg.setTitle("Home");
+        reg.setTitle("Update Appointment");
         reg.setScene(scene);
 
         reg.show();

@@ -18,16 +18,15 @@ import javafx.stage.StageStyle;
  * @author Zuby
  */
 public class HomeController implements Initializable {
-    /*
-     Method to close the current window, with the mouseclick passed in as an
-     argument .
-     */
 
+    /*
+     Closes current window
+     */
     private void closeWindow(ActionEvent event) {
         ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
     }
 
-    // Method to load the Register.fxml file.
+    // Loads user register window
     private void loadRegister() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/Register.fxml"));
         Scene scene = new Scene(root);
@@ -37,7 +36,7 @@ public class HomeController implements Initializable {
         reg.show();
     }
 
-    // Method to load UserLogin.fxml file.
+    // Loads user login window
     private void loadUserLogin() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/UserLogin.fxml"));
         Scene scene = new Scene(root);
@@ -47,6 +46,7 @@ public class HomeController implements Initializable {
         reg.show();
     }
 
+    // Loads staff login window
     private void loadStaffLogin() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/StaffLogin.fxml"));
         Scene scene = new Scene(root);
@@ -56,16 +56,14 @@ public class HomeController implements Initializable {
         reg.show();
     }
 
-    /* Finds 'User Register' button and calls loadRegister() method and then
-     calls closeWindow() method, and passes the event (mouseclick) into it.*/
+    // To open user register
     @FXML
     private void regButtonAction(ActionEvent event) throws IOException {
         loadRegister();
         closeWindow(event);
     }
 
-    /* Finds 'User Login' button and calls loadUserLogin() method and then
-     calls closeWindow() method, and passes the event (mouseclick) into it.*/
+   // To open user login
     @FXML
     private void userLoginButton(ActionEvent event) throws IOException {
         loadUserLogin();
@@ -73,6 +71,7 @@ public class HomeController implements Initializable {
 
     }
 
+    // To open staff login
     @FXML
     private void staffLoginButton(ActionEvent event) throws IOException {
         loadStaffLogin();
@@ -80,11 +79,9 @@ public class HomeController implements Initializable {
 
     }
 
-    /* Finds 'Exit' button andcalls closeWindow() method, and passes the
-     event (mouseclick) into it.*/
+    // Exits program
     @FXML
     private void exitButtonAction(ActionEvent event) throws IOException {
-//        ((Stage) (((Button) event.getSource()).getScene().getWindow())).close();
         closeWindow(event);
     }
 
